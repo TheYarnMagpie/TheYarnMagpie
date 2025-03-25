@@ -29,23 +29,7 @@ h1 {
     background-color: #ffcc00;
 }
 
-.button {
-    display: inline-block;
-    background-color: #ffdd00;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 10px;
-    text-decoration: none;
-}
-
-.button:hover {
-    background-color: #ffcc00;
-}
-
+/* Social Media Buttons */
 .social-icons {
     margin-top: 20px;
 }
