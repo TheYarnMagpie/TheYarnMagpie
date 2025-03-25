@@ -52,6 +52,7 @@ h1 {
 /* Social Media Buttons */
 .social-icons {
     margin-top: 20px;
+    width: 50 px;
 }
 
 .social-icons a {
