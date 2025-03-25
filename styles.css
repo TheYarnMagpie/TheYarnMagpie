@@ -8,6 +8,27 @@ h1 {
     color: #333;
 }
 
+
+.bmc-button {
+    display: inline-block;
+    background-color: #ffdd00;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    text-decoration: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.bmc-button:hover {
+    background-color: #ffcc00;
+}
+
 .button {
     display: inline-block;
     background-color: #ffdd00;
