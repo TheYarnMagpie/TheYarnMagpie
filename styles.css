@@ -52,7 +52,6 @@ h1 {
 /* Social Media Buttons */
 .social-icons {
     margin-top: 20px;
-    width: 50 px;
 }
 
 .social-icons a {
@@ -62,7 +61,7 @@ h1 {
     font-size: 20px;
     color: white;
     border-radius: 50%;
-    width: 40px;
+    width: 100px;
     height: 40px;
     text-align: center;
     line-height: 40px;
