@@ -53,7 +53,7 @@ h1 {
 .social-icons {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat (2, 1 fr); /* creates 2 equal columns */
+    grid-template-columns: repeat(2, 1 fr); /* creates 2 equal columns */
     gap: 10px;
     justify-content: center;
     max-width: 250px;
