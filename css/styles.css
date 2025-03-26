@@ -73,6 +73,7 @@ h1 {
     text-align: center;
     line-height: 40px;
     text-decoration: none;
+    border: 2px solid red;
 }
 
 /* Platform-Specific Colors */
