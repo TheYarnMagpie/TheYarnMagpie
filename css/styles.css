@@ -49,14 +49,14 @@ h1 {
 }
 
 /* Social Media Buttons */
-.social-icons {
+body .social-icons {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1 fr); /* creates 2 equal columns */
     gap: 10px;
 }
 
-.social-icons a {
+body .social-icons a {
     display: flex;
     justify-content: center;
     align-items: center;
