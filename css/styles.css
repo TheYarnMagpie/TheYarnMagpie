@@ -55,7 +55,6 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2, 1 fr); /* creates 2 equal columns */
     gap: 10px;
-    justify-content: center;
     max-width: 250px;
     margin-left: auto;
     margin-right: auto;
