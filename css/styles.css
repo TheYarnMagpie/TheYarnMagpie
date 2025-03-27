@@ -39,6 +39,31 @@ header p {
     color: #666;
 }
 
+
+/* Navigation Bar */
+nav {
+    background: #444;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
 h1 {
     color: #333;
 }
