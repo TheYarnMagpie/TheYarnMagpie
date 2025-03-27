@@ -1,12 +1,28 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset basic styles for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Set a basic layout */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f8f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
 header {
+    background-color: #f8f8f8;
+    padding: 15px 20px;
     text-align: center;
     margin: 0;
-    padding: 20px;
-    background-color: #f8f8f8;
     border-bottom: 2px solid #ddd;
 }
 
