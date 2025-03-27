@@ -98,7 +98,7 @@ div .social-icons {
 }
 
 div .social-icons a {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     font-size: 20px;
