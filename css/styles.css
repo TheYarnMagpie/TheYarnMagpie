@@ -90,14 +90,14 @@ h1 {
 }
 
 /* Social Media Buttons */
-body .social-icons {
+div .social-icons {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1 fr); /* creates 2 equal columns */
     gap: 10px;
 }
 
-body .social-icons a {
+div .social-icons a {
     display: flex;
     justify-content: center;
     align-items: center;
