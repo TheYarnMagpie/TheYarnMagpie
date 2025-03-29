@@ -69,25 +69,7 @@ h1 {
 }
 
 
-.bmc-button {
-    display: inline-block;
-    background-color: #ffdd00;
-    color: black;
-    border: none;
-    padding: 5px 10px 5px 10px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 10px;
-    text-decoration: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease-in-out;
-}
 
-.bmc-button:hover {
-    background-color: #ffcc00;
-}
 
 /* Social Media Buttons */
 body .social-icons {
@@ -114,3 +96,24 @@ body .social-icons a {
 .youtube { background-color: #FF0000; }
 .tiktok { background-color: #000000; }
 .twitter { background-color: #1DA1F2; }
+
+
+.bmc-button {
+    display: inline-block;
+    background-color: #ffdd00;
+    color: black;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    text-decoration: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.bmc-button:hover {
+    background-color: #ffcc00;
+}
