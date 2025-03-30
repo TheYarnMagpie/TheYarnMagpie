@@ -74,16 +74,16 @@ h1 {
 /* Social Media Buttons */
 .social-icons {
     margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1 fr); /* creates 2 equal columns */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    width: 50vw;
+    max-width: 200px;
 }
 
 .social-icons a {
-    display: block;
-    justify-content: center;
-    align-items: center;
+    flex: 1 1 calc(50%-10px);
+    text-align: center;
     font-size: 20px;
     color: white;
     border-radius: 10px;
