@@ -67,10 +67,25 @@ nav ul li a {
 /* Social Media Buttons */
 
 .social-icons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two buttons per row */
-    gap: 10px;
-    max-width: 220px;
+    .social-icons {
+    display: flex;
+    flex-wrap: wrap;  /* Allows buttons to break into new rows */
+    flex-direction: column;  /* Stacks items vertically first */
+    align-items: center; /* Centers content horizontally */
+    gap: 10px; /* Spacing between buttons */
+    height: 120px; /* Adjust based on button size */
+    max-width: 200px; /* Prevents excessive stretching */
+}
+
+.social-icons a {
+    width: 45%; /* Two buttons per row */
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*
