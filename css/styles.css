@@ -78,10 +78,9 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    max-width: 220px;
 }
 
-.social-icons a {
+a .social-icons {
     width: 50%;
     display: flex; 
     justify-content: center; 
