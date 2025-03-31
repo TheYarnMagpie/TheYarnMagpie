@@ -64,13 +64,6 @@ nav ul li a {
 
 
 
-h1 {
-    color: red; /* #333; */
-}
-
-
-
-
 /* Social Media Buttons */
 .social-icons {
     margin-top: 20px;
@@ -102,6 +95,10 @@ h1 {
 .tiktok { background-color: #000000; }
 .threads { background-color: #1DA1F2; }
 
+
+h1 {
+    color: #333;
+}
 
 .bmc-button {
     display: inline-block;
