@@ -65,6 +65,15 @@ nav ul li a {
 
 
 /* Social Media Buttons */
+
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two buttons per row */
+    gap: 10px;
+    max-width: 220px;
+}
+
+/*
 .social-icons {
     margin-top: 20px;
     display: flex;
@@ -88,6 +97,8 @@ nav ul li a {
     line-height: 40px;
     text-decoration: none;
 }
+
+*/
 
 /* Platform-Specific Colors */
 .instagram { background-color: #E4405F; }
