@@ -85,7 +85,7 @@ nav ul li a {
     gap: 10px;
     max-width: 220px;
 }
-
+/*
 .social-icons a {
     width: 45%; /* Two buttons per row */
     text-align: center;
@@ -100,7 +100,7 @@ nav ul li a {
     line-height: 40px;
     text-decoration: none;
 }
-
+*/
 
 /* Platform-Specific Colors */
 .instagram { background-color: #E4405F; }
