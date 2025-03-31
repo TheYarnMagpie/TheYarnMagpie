@@ -80,7 +80,7 @@ h1 {
     gap: 10px;
 }
 
-a.social-icons {
+.social-icons a {
     width: 50%;
     display: flex; 
     justify-content: center; 
