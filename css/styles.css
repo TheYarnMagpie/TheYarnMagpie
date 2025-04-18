@@ -20,7 +20,7 @@ body {
 
 
 header {
-    max-height: fit-content;
+    height: fit-content;
     width: 100%;
     background-color: #f8f8f8;
     padding: 15px 20px;
@@ -30,21 +30,24 @@ header {
 }
 
 header h1 {
-    font-size: 48px;
+    font-size: 36px;
     color: #333;
     margin: 0;
+    padding: 25px;
     font-family: "Gwendolyn";
 }
 
 header p {
-    font-size: 18px;
+    font-size: 14px;
     color: #666;
+    margin: 0;
+    padding: 25px;
 }
 
 
 /* Navigation Bar */
 nav {
-    width: 100vw;
+    width: 100%;
     background: #444;
     text-align: center;
     padding: 10px 0;
