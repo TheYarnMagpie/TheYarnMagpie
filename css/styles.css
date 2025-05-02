@@ -44,6 +44,11 @@ header p {
 
 
 /* Navigation Bar */
+.nav-container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
 nav {
     width: 100vw;
     background: #444;
