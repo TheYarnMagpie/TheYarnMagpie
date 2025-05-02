@@ -9,20 +9,21 @@
 body {
     font-family: 'Arial', sans-serif;
     color: #333;
-    display: flex;
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 
 header {
     height: fit-content;
     width: 100%;
+    max-width: none;
     background-color: #f818f8;
-    padding: 15px 20px;
-    text-align: center;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
     border-bottom: 2px solid #ddd;
 }
 
@@ -45,7 +46,8 @@ nav {
     width: 100vw;
     background: #444;
     text-align: center;
-    padding: 10px 0;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul {
