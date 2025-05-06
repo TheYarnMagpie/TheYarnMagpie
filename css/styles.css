@@ -71,6 +71,14 @@ section {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
+section h2 {
+      font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+        color: #b85c38;
+        border-bottom: 2px solid #f3d8c7;
+        padding-bottom: 0.3rem;
+}
+
 /* Social pages links section  */
 #social-section {
     text-align: center;
