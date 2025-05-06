@@ -16,7 +16,7 @@ header, nav {
 
 header {
     background-color: #2C2C2E;
-    border-bottom: 2px solid #C8A146;
+    border-bottom: 4px solid #C8A146;
 }
 
 header h1 {
@@ -52,12 +52,21 @@ nav ul {
     margin: 0;
 }
 
-nav ul li a{
+nav ul li a {
     display: block;
     padding: 1em;
     color: white;
     text-decoration: none;
     font-weight: bold;
+}
+
+/* Sections of main page */
+section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #B2B2B5;
+    border-bottom: 2px solid #C8A146;
 }
 
 /* Social pages links section  */
