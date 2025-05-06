@@ -62,12 +62,12 @@ nav ul li a {
 
 /* Sections of main page */
 section {
-    margin: 0.5rem;
-    padding: 1rem;
+    margin: 0.4rem;
+    padding: 0.8rem;
     background-color: #3E3E45;
     border-bottom: 2px solid #C8A146;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px 0 #C8A146;
 }
 
 section h2 {
