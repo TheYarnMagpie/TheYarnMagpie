@@ -18,7 +18,7 @@ header, nav {
 
 header {
     background-color: #2C2C2E;
-    border-bottom: 4px solid #C8A146;
+    border-bottom: 2px solid #C8A146;
 }
 
 header h1 {
@@ -41,6 +41,7 @@ header p {
 /* Navigation Bar */
 nav {
     background: #444;
+    border-bottom: 4px solid #C8A146;
 }
 
 .nav-container {
@@ -67,7 +68,7 @@ nav ul li a {
 section {
     margin: 0.4rem;
     padding: 0.8rem;
-    background-color: #3E3E45;
+    background-color: #3E3E41;
     border-bottom: 2px solid #C8A146;
     border-radius: 12px;
     box-shadow: 0 2px 6px 0 #C8A146;
