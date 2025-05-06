@@ -1,6 +1,6 @@
 /* Set a basic layout */
 body, html {
-    background-color: #DADADD;
+    background-color: #B2B2B5;
     flex-direction: column;
     width: 100vw;
     margin: 0;
@@ -21,14 +21,14 @@ header {
 header h1 {
     margin: 0;
     padding: 0.5rem 0;
-    font-size: 72px;
+    font-size: 80px;
     color: #F5F5F5;
     text-align: center;
     font-family: "Gwendolyn";
 }
 
 header p {
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Arial', sans-serif;
     color: #DADADD;
     text-align: center;
@@ -62,7 +62,7 @@ nav ul li a {
 
 /* Sections of main page */
 section {
-    margin: 1rem;
+    margin: 0.5rem;
     padding: 1rem;
     background-color: #3E3E45;
     border-bottom: 2px solid #C8A146;
