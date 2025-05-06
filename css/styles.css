@@ -40,8 +40,9 @@ header p {
 
 /* Navigation Bar */
 nav {
-    background: #444;
+    background: #3E3E41;
     border-bottom: 4px solid #C8A146;
+    box-shadow: 0 2px 4px 0 #C8A146;
 }
 
 .nav-container {
@@ -62,14 +63,14 @@ nav ul li a {
     color: #F5F5F5;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1rem;
 }
 
 /* Sections of main page */
 section {
-    margin: 0.4rem;
-    padding: 0.8rem;
-    background-color: #3E3E41;
-    border-bottom: 2px solid #C8A146;
+    margin: 1rem;
+    padding: 1.5rem;
+    background-color: #2C2C2E;
     border-radius: 12px;
     box-shadow: 0 2px 6px 0 #C8A146;
 }
@@ -93,6 +94,7 @@ section p {
 }
 
 section ul li {
+    padding: 0 0 0 5px;
     font-size: 1rem;
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
