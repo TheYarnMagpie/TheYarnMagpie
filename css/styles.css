@@ -1,10 +1,13 @@
 /* Set a basic layout */
 body, html {
-    background-color: #B2B2B5;
     flex-direction: column;
     width: 100vw;
     margin: 0;
     padding: 0;
+}
+
+main {
+    background-color: #B2B2B5;
 }
 
 header, nav {
