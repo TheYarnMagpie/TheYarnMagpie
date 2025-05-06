@@ -1,6 +1,6 @@
 /* Set a basic layout */
 body, html {
-    background-color:#2C2C2E;
+    background-color: #DADADD;
     flex-direction: column;
     width: 100vw;
     margin: 0;
@@ -55,7 +55,7 @@ nav ul {
 nav ul li a {
     display: block;
     padding: 1em;
-    color: white;
+    color: #F5F5F5;
     text-decoration: none;
     font-weight: bold;
 }
@@ -64,7 +64,7 @@ nav ul li a {
 section {
     margin: 2rem;
     padding: 1rem;
-    background-color: #B2B2B5;
+    background-color: #3E3E45;
     border-bottom: 2px solid #C8A146;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -73,8 +73,8 @@ section {
 section h2 {
     font-size: 1.8rem;
     margin-bottom: 0.8rem;
-    color: #2C2C2E;
-    border-bottom: 2px solid #B86F50;
+    color: #F5F5F5;
+    border-bottom: 3px solid #B86F50;
     padding-bottom: 0.3rem;
 }
 
@@ -82,14 +82,14 @@ section p {
     font-size: 0.9rem;
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
-    color: #2C2C2E;
+    color: #F5F5F5;
 }
 
 section ul li {
     font-size: 1rem;
     font-family: "Cormorant Garamond", serif;
-    font-weight: 400;
-    color: #2C2C2E;
+    font-weight: 300;
+    color: #F5F5F5;
 }
 
 /* Social pages links section  */
