@@ -1,6 +1,6 @@
 /* Set a basic layout */
 body, html {
-    color: #333;
+    background-color:#2C2C2E;
     flex-direction: column;
     width: 100vw;
     margin: 0;
@@ -73,8 +73,8 @@ section {
 section h2 {
     font-size: 1.8rem;
     margin-bottom: 0.8rem;
-    color: #b85c38;
-    border-bottom: 2px solid #f3d8c7;
+    color: #2C2C2E;
+    border-bottom: 2px solid #B86F50;
     padding-bottom: 0.3rem;
 }
 
