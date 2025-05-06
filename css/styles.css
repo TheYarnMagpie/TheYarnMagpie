@@ -63,7 +63,7 @@ nav ul li a {
 /* Sections of main page */
 section {
     margin: 2rem;
-    padding: 1.5rem;
+    padding: 1rem;
     background-color: #B2B2B5;
     border-bottom: 2px solid #C8A146;
     border-radius: 12px;
@@ -79,9 +79,16 @@ section h2 {
 }
 
 section p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
+    color: #2C2C2E;
+}
+
+section ul li {
+    font-size: 1rem;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
     color: #2C2C2E;
 }
 
