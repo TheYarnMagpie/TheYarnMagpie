@@ -1,6 +1,5 @@
 /* Set a basic layout */
 body, html {
-    font-family: 'Arial', sans-serif;
     color: #333;
     flex-direction: column;
     width: 100vw;
@@ -30,6 +29,7 @@ header h1 {
 
 header p {
     font-size: 14px;
+    font-family: 'Arial', sans-serif;
     color: #DADADD;
     text-align: center;
 }
@@ -62,7 +62,6 @@ nav ul li a {
 
 /* Sections of main page */
 section {
-    width: 100%;
     margin: 2rem auto;
     padding: 1.5rem;
     background-color: #B2B2B5;
@@ -72,11 +71,18 @@ section {
 }
 
 section h2 {
-      font-size: 1.8rem;
-        margin-bottom: 0.8rem;
-        color: #b85c38;
-        border-bottom: 2px solid #f3d8c7;
-        padding-bottom: 0.3rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #b85c38;
+    border-bottom: 2px solid #f3d8c7;
+    padding-bottom: 0.3rem;
+}
+
+section p {
+    font-size: 1rem;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    font-style: italic;
 }
 
 /* Social pages links section  */
