@@ -8,6 +8,7 @@ body, html {
 
 main {
     background-color: #B2B2B5;
+    margin: 0;
 }
 
 header, nav {
@@ -41,8 +42,7 @@ header p {
 /* Navigation Bar */
 nav {
     background: #3E3E41;
-    border-bottom: 4px solid #C8A146;
-    box-shadow: 0 2px 4px 0 #C8A146;
+    box-shadow: 0 4px 6px 0 #C8A146;
 }
 
 .nav-container {
