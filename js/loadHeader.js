@@ -1,9 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('components/header.html')
-    .then(response => 
-response.text())
+let basepath =
+window.location.pathname.includes('/pages/')
+  ? '../components/header.html'
+  : 'components/header.html';
+
+fetch(basePath)
+    .then(response => response.text())
     .then(data => {
 
 document.getElementById('header-placeholder').innerHTML = data;
     });
-});
