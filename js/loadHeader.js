@@ -3,24 +3,25 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!headerPlaceholder) return;
 
   // Determine the correct path to header.html based on the current page's location
-  const scriptPath = document.currentScript.src;
-const repoRoot = scriptPath.substring(0, scriptPath.lastIndexOf('/js/'));
-const path = `${repoRoot}/components/header.html`;
+  const path = window.location.pathname.includes('/pages/') ? '../components/header.html' : 'components/header.html';
 
-console.log("Fetching header from:", path);
+  fetch(path)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      headerPlaceholder.innerHTML = data;
 
-    fetch(path)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then(data => {
-        headerPlaceholder.innerHTML = data;
-      })
-      .catch(error => {
-        console.error('Error loading header:', error);
+      // Adjust all data-href links to work with current base path
+      const basePath = window.location.pathname.includes('/TheYarnMagpie/') ? '/TheYarnMagpie/' : '/';
+      document.querySelectorAll('a[data-href]').forEach(link => {
+        link.href = basePath + link.getAttribute('data-href');
       });
+    })
+    .catch(error => {
+      console.error('Error loading header:', error);
     });
-    
+});
