@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 const repoRoot = scriptPath.substring(0, scriptPath.lastIndexOf('/js/'));
 const path = `${repoRoot}/components/header.html`;
 
+console.log("Fetching header from:", path);
+
     fetch(path)
       .then(response => {
         if (!response.ok) {
