@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!headerPlaceholder) return;
 
   // Determine the correct path to header.html based on the current page's location
-  const path = window.location.pathname.includes('/pages/') ? '../components/header.html' : 'components/header.html';
+  const scriptPath = document.currentScript.src;
+const repoRoot = scriptPath.substring(0, scriptPath.lastIndexOf('/js/'));
+const path = `${repoRoot}/components/header.html`;
 
     fetch(path)
       .then(response => {
