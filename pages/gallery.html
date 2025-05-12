@@ -39,5 +39,10 @@
     </main>
     
     <script src="../js/loadHeader.js"></script>
+    <script>
+  window.addEventListener('error', function (e) {
+    alert('Error:\n' + e.message + '\nFile: ' + e.filename + '\nLine: ' + e.lineno);
+  });
+</script>
 </body>
 </html>
