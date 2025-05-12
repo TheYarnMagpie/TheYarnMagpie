@@ -5,6 +5,25 @@ document.addEventListener("DOMContentLoaded", function () {
   // Determine the correct path to header.html based on the current page's location
   const path = window.location.pathname.includes('/pages/') ? '../components/header.html' : 'components/header.html';
 
+const basePath = window.location.pathname.includes('/TheYarnMagpie/') 
+  ? '/TheYarnMagpie/' 
+  : '/';
+
+const head = document.head;
+
+['css/styles.css', 'css/gallery-styles.css', 'css/header.css'].forEach(file => {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = basePath + file;
+  head.appendChild(link);
+});
+
+// Optional: add the font link too
+const font = document.createElement('link');
+font.rel = 'stylesheet';
+font.href = 'https://fonts.googleapis.com/css2?family=Gwendolyn&display=swap';
+head.appendChild(font);
+
   fetch(path)
     .then(response => {
       if (!response.ok) {
