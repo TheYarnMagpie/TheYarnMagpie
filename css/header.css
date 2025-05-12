@@ -1,0 +1,54 @@
+header, nav {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2C2C2E;
+    border-bottom: 2px solid #C8A146;
+}
+
+header h1 {
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: 80px;
+    color: #F5F5F5;
+    text-align: center;
+    font-family: "Gwendolyn";
+}
+
+header p {
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    color: #DADADD;
+    text-align: center;
+}
+
+
+/* Navigation Bar */
+nav {
+    background: #3E3E41;
+    box-shadow: 0 4px 6px 0 #C8A146;
+}
+
+.nav-container {
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 1em;
+    color: #F5F5F5;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}

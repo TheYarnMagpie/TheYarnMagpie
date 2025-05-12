@@ -10,7 +10,7 @@ main {
     background-color: #B2B2B5;
     margin: 0;
 }
-
+/*
 header, nav {
     width: 100%;
     margin: 0;
@@ -64,8 +64,8 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
-}
-
+} 
+*/
 /* Sections of main page */
 section {
     margin: 1rem;
