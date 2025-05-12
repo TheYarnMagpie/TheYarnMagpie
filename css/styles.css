@@ -1,6 +1,6 @@
-/* Set a basic layout */
+
 body, html {
-    flex-direction: column;
+   flex-direction: column;
     width: 100vw;
     margin: 0;
     padding: 0;
@@ -11,21 +11,6 @@ main {
     margin: 0;
 }
 
-nav {
-    background: #3E3E41;
-    box-shadow: 0 4px 6px 0 #C8A146;
-}
-
-.nav-container {
-    margin: 0 auto;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
-    margin
 /* Sections of main page */
 section {
     margin: 1rem;
