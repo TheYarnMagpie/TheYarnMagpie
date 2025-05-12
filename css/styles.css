@@ -25,18 +25,7 @@ nav ul {
     display: flex;
     justify-content: space-around;
     padding: 0;
-    margin: 0;
-}
-
-nav ul li a {
-    display: block;
-    padding: 1em;
-    color: #F5F5F5;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-} 
-*/
+    margin
 /* Sections of main page */
 section {
     margin: 1rem;
