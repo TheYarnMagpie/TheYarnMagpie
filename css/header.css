@@ -9,6 +9,16 @@ header {
     border-bottom: 2px solid #C8A146;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand .magpie-yarn {
+  height: 100px; /* Adjust as needed */
+  width: auto;
+}
 header h1 {
     margin: 0;
     padding: 0.5rem 0;
