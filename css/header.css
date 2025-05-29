@@ -32,8 +32,8 @@ header p {
     font-size: 16px;
     font-family: 'Arial', sans-serif;
     color: var(--tail-green);
-    text-shadow: 2px 2px var(--downy-grey)
-    text-align: center;
+    text-shadow: 2px 2px var(--feather-white);
+    align: center;
 }
 
 
@@ -59,6 +59,7 @@ nav ul li a {
     display: block;
     padding: 1em;
     color: var(--wing-blue);
+    text-shadow: 2px 2px var(--feather-white)
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
