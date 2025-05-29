@@ -61,7 +61,6 @@ blockquote {
     font-style: italic;
     padding: 1rem;
     margin: 1rem 0;
-    background-color: #fdf1ea;
     border-left: 4px solid #b85c38;
 }
 
@@ -109,8 +108,8 @@ h1 {
 
 .bmc-button {
     display: inline-block;
-    background-color: #ffdd00;
-    color: var(--violet-sheen);
+    background-color: var(--wing-blue);
+    color: var(--feather-white);
     border: none;
     padding: 5px 10px 5px 10px;
     font-size: 18px;
@@ -124,5 +123,5 @@ h1 {
 }
 
 .bmc-button:hover {
-    background-color: #ffcc00;
+    background-color: var(--violet-sheen);
 }
