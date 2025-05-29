@@ -12,15 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = data;
 
-      // Adjust all relative paths if we're on a subpage
-      if (isSubpage) {
-        tempDiv.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-          if (link.href.includes('/css/')) {
-            link.href = link.href.replace('/css/', '/../css/');
-          }
-        });
-      }
-
       [...tempDiv.children].forEach(el => head.appendChild(el));
     })
     .catch(error => {
