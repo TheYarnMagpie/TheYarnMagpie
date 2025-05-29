@@ -78,6 +78,7 @@ blockquote {
     display: flex;
     flex-wrap: wrap;  /* Allows buttons to break into new rows */
     flex-direction: column;  /* Stacks items vertically first */
+    justify-content: space-beteen;
     align-items: center; /* Centers content horizontally */
     gap: 10px; /* Spacing between buttons */
     height: 120px; /* Adjust based on button size */
@@ -109,7 +110,7 @@ h1 {
 .bmc-button {
     display: inline-block;
     background-color: #ffdd00;
-    color: black;
+    color: var(--violet-sheen);
     border: none;
     padding: 5px 10px 5px 10px;
     font-size: 18px;
