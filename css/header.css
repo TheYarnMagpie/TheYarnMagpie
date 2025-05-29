@@ -16,7 +16,7 @@ header {
 }
 
 .brand .magpie-yarn {
-  height: 100px; /* Adjust as needed */
+  height: 150px; /* Adjust as needed */
   width: auto;
 }
 header h1 {
@@ -31,7 +31,8 @@ header h1 {
 header p {
     font-size: 12px;
     font-family: 'Arial', sans-serif;
-    color: #DADADD;
+    color: var(--tail-green);
+    text-shadow: 2px 2px var(--downy-grey)
     text-align: center;
 }
 

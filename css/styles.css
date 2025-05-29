@@ -1,16 +1,3 @@
-:root {
-  --feather-black: #2C2C2E;
-  --coal-dust: #3E3E41;
-  --mid-feather-grey: #B2B2B5;
-  --downy-grey: #DADADD;
-  --feather-white: #F5F5F5;
-  --wing-blue: #4682B4;
-  --tail-green: #3C9D88;
-  --copper-gleam: #B86F50;
-  --violet-sheen: #7A5CA0;
-  --sheen-gold: #C8A146;
-}
-
 body, html {
    flex-direction: column;
     width: 100vw;
