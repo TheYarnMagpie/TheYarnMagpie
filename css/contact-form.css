@@ -1,5 +1,9 @@
 /* styles for contact form */
 
+#contact-info {
+  background-color: var(--downy-grey);
+}
+
 #contact-form {
   max-width: 600px;
   margin: 0 auto;
