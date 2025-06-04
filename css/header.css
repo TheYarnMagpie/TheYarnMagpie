@@ -1,13 +1,13 @@
 header, nav {
     width: 100%;
     margin: 0;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 header {
+      padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background-color: #2C2C2E;
     border-bottom: 2px solid #C8A146;
 }
