@@ -43,7 +43,7 @@ section h2 {
 }
 
 section p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
     color: #F5F5F5;
@@ -59,6 +59,7 @@ section ul li {
 
 blockquote {
     font-style: italic;
+    font-size: 1.5rem;
     padding: 1rem;
     margin: 1rem 0;
     border-left: 4px solid var(--copper-gleam);
@@ -70,11 +71,9 @@ blockquote {
   font-weight: normal;
 }
 
-/*
-.featured-img {
+.feature-img {
   height: 150px;
 }
-*/
 
 /* Social pages links section  */
 #social-section {
