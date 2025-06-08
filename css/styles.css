@@ -35,7 +35,7 @@ section h2 {
     font-family: "Cormorant Upright", serif;
     font-weight: 600;
     font-style: normal;
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 0.8rem;
     color: var(--feather-white);
     border-bottom: 3px solid var(--copper-gleam);
@@ -43,7 +43,7 @@ section h2 {
 }
 
 section p {
-    font-size: 0.9rem;
+    font-size: 1.6rem;
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
     color: #F5F5F5;
@@ -51,7 +51,7 @@ section p {
 
 section ul li {
     padding: 0 0 0 5px;
-    font-size: 1rem;
+    font-size: 1.8rem;
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
     color: #F5F5F5;
@@ -59,6 +59,7 @@ section ul li {
 
 blockquote {
     font-style: italic;
+    font-size: 1.5rem;
     padding: 1rem;
     margin: 1rem 0;
     border-left: 4px solid var(--copper-gleam);
@@ -70,11 +71,11 @@ blockquote {
   font-weight: normal;
 }
 
-/*
-.featured-img {
-  height: 150px;
+.feature-img {
+  height: 400px;
+  display: flex;
+  justify-content: center;
 }
-*/
 
 /* Social pages links section  */
 #social-section {
@@ -98,7 +99,7 @@ blockquote {
     width: 45%; /* Two buttons per row */
     text-align: center;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     text-decoration: none;
     display: flex;
     justify-content: center;
