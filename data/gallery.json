@@ -1,0 +1,19 @@
+[
+    {
+        "image": "img/ejemplo1.jpg",
+        "title": "Bufanda de Lana",
+        "details": "Bufanda tejida a mano con lana merino suave. Ideal para el invierno."
+    },
+    
+    {
+        "image": "img/ejemplo2.jpg",
+        "title": "Gorro Vintage",
+        "details": "Gorro estilo vintage en tonos pastel, perfecto para cualquier ocasión."
+    },
+        
+    {
+        "image": "img/ejemplo3.jpg",
+        "title": "Guantes sin Dedos",
+        "details": "Guantes cómodos y modernos, tejidos con hilo ecológico."
+    }
+]
