@@ -1,46 +1,79 @@
-fetch('../data/gallery.json')
-    .then(response => response.json())
-    .then(items => {
-        const container = document.getElementById('gallery-container');
-        items.forEach(item => {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'gallery-item';
-            galleryItem.innerHTML = `
-                <img src="${item.image}" alt="${item.title}" />
-                <h3>${item.title}</h3>
-                <a href="#" class="see-details-link">See Details</a>
-                <div class="sub-card">
-                    <button class="close-sub-card" title="Cerrar">&times;</button>
-                    <h4>Detalles del ítem</h4>
-                    <p>${item.details}</p>
-                </div>
-            `;
-            container.appendChild(galleryItem);
-        });
+// js/loadGallery.js
 
-        // Lógica para mostrar/ocultar la sub-card
-        document.querySelectorAll('.gallery-item').forEach(function(item) {
-            const link = item.querySelector('.see-details-link');
-            const subCard = item.querySelector('.sub-card');
-            const closeBtn = item.querySelector('.close-sub-card');
+// Function to render gallery cards dynamically from JSON data
+function renderGalleryCards(galleryData) {
+    const galleryContainer = document.getElementById('galleryContainer');
+    galleryContainer.innerHTML = '';
+    galleryData.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" class="gallery-card-image" />
+          <div class="gallery-card-content">
+            <h3>${item.title}</h3>
+            <button class="see-details-btn" data-idx="${idx}">See Details</button>
+          </div>
+        `;
+        galleryContainer.appendChild(card);
+      });
+    }
 
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                subCard.style.display = 'block';
-                item.classList.add('show-details');
-            });
+// Load the detail card template (once) and add to body
+fetch('/components/gallery-detail-card.html')
+  .then(res => res.text())
+  .then(html => {
+    document.body.insertAdjacentHTML('beforeend', html);
+  });
 
-            closeBtn.addEventListener('click', function() {
-                subCard.style.display = 'none';
-                item.classList.remove('show-details');
-            });
+// Function to open the gallery detail overlay with item data
+function openGalleryDetail(item) {
+  const overlay = document.getElementById('galleryDetailOverlay');
+  if (!overlay) return;
 
-            document.addEventListener('click', function(e) {
-                if (subCard.style.display === 'block' && !item.contains(e.target)) {
-                    subCard.style.display = 'none';
-                    item.classList.remove('show-details');
-                }
-            });
-        });
+  // Populate data
+  document.getElementById('detailImage').src = item.image;
+  document.getElementById('detailImage').alt = item.title;
+  document.getElementById('detailTitle').textContent = item.title;
+  document.getElementById('detailDescription').textContent = item.description || '';
+  const tagsUl = document.getElementById('detailTags');
+  tagsUl.innerHTML = '';
+    if (item.tags && Array.isArray(item.tags)) {
+      item.tags.forEach(tag => {
+        const li = document.createElement('li');
+        li.textContent = tag;
+        tagsUl.appendChild(li);
+      });
+    }
+
+    overlay.classList.add('active');
+ }
+
+  // Overlay close handler (close on X or when clicking the overlay background)
+  document.addEventListener('click', function(e) {
+    const overlay = document.getElementById('galleryDetailOverlay');
+    if (!overlay || !overlay.classList.contains('active')) return;
+    if (
+      e.target.id === 'galleryDetailOverlay' || // clicked overlay background
+      e.target.id === 'closeDetailBtn'          // clicked close button
+    ) {
+      overlay.classList.remove('active');
+    }
+  });
+
+  // Attach "See Details" button listeners after gallery renders
+  function attachDetailButtons(galleryData) {
+    document.querySelectorAll('.see-details-btn').forEach((btn) => {
+      const idx = btn.getAttribute('data-idx');
+      btn.addEventListener('click', () => openGalleryDetail(galleryData[idx]));
     });
+  }
+
+  // Fetch gallery data and render cards
+  fetch('/data/gallery.json')
+    .then(r => r.json())
+    .then(galleryData => {
+      renderGalleryCards(galleryData);
+      attachDetailButtons(galleryData);
+   });
+
 
