@@ -1,8 +1,6 @@
-// js/loadGallery.js
-
 // Function to render gallery cards dynamically from JSON data
 function renderGalleryCards(galleryData) {
-    const galleryContainer = document.getElementById('galleryContainer');
+    const galleryContainer = document.getElementById('gallery-container');
     galleryContainer.innerHTML = '';
     galleryData.forEach((item, idx) => {
         const card = document.createElement('div');
