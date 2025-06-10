@@ -19,7 +19,7 @@ function renderGalleryCards(galleryData) {
     }
 
 // Load the detail card template (once) and add to body
-fetch('/components/gallery-detail-card.html')
+fetch('../components/gallery-detail-card.html')
   .then(res => res.text())
   .then(html => {
     document.body.insertAdjacentHTML('beforeend', html);
@@ -69,11 +69,20 @@ function openGalleryDetail(item) {
   }
 
   // Fetch gallery data and render cards
-  fetch('/data/gallery.json')
-    .then(r => r.json())
+  fetch('../data/gallery.json')
+    .then(res => res.json())
     .then(galleryData => {
       renderGalleryCards(galleryData);
       attachDetailButtons(galleryData);
-   });
+
+      // Añade listeners a los botones de detalles
+      document.querySelectorAll('.see-details-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const idx = this.getAttribute('data-idx');
+          openGalleryDetail(galleryData[idx]);
+        });
+      });
+    });
 
 
+  
