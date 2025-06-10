@@ -1,7 +1,30 @@
+<<<<<<< HEAD
 // js/loadGallery.js
 
 // Cargar el template del details-card una sola vez
 fetch('../components/gallery-detail-card.html')
+=======
+// Function to render gallery cards dynamically from JSON data
+function renderGalleryCards(galleryData) {
+    const galleryContainer = document.getElementById('gallery-container');
+    galleryContainer.innerHTML = '';
+    galleryData.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" class="gallery-card-image" />
+          <div class="gallery-card-content">
+            <h3>${item.title}</h3>
+            <button class="see-details-btn" data-idx="${idx}">See Details</button>
+          </div>
+        `;
+        galleryContainer.appendChild(card);
+      });
+    }
+
+// Load the detail card template (once) and add to body
+fetch('/components/gallery-detail-card.html')
+>>>>>>> b868225a9c61c5e58123f37d17163d9e333db151
   .then(res => res.text())
   .then(html => {
     document.body.insertAdjacentHTML('beforeend', html);
