@@ -9,7 +9,7 @@ Check off each item as you address it.
 
 - [ ] Validate all HTML files for syntax errors and semantic correctness.
 - [ ] Ensure all images have meaningful `alt` text (from JSON where dynamic).
-- [ ] Use semantic elements (`<nav>`, `<main>`, `<header>`, `<section>`, `<article>`, etc.).
+- [x] Use semantic elements (`<nav>`, `<main>`, `<header>`, `<section>`, `<article>`, etc.).
 - [ ] Ensure every page has a unique `<title>` and `<meta description>`.
 - [ ] Avoid duplicate IDs, especially when cloning templates.
 - [ ] Confirm all forms have properly associated `<label>`s.
@@ -25,8 +25,8 @@ Check off each item as you address it.
 - [ ] No duplicate IDs in template structure.
 
 ### `components/head.html` & `header.html`
-- [ ] All required meta tags present (charset, viewport, etc.).
-- [ ] Navigation uses `<nav>`, with logical and accessible structure.
+- [x] All required meta tags present (charset, viewport, etc.).
+- [x] Navigation uses `<nav>`, with logical and accessible structure.
 - [ ] Keyboard navigation and skip-to-content link available.
 
 ---
