@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-// js/loadGallery.js
 
-// Cargar el template del details-card una sola vez
-fetch('../components/gallery-detail-card.html')
-=======
 // Function to render gallery cards dynamically from JSON data
 function renderGalleryCards(galleryData) {
-    const galleryContainer = document.getElementById('gallery-container');
+    const galleryContainer = document.getElementById('gallery-container);
     galleryContainer.innerHTML = '';
     galleryData.forEach((item, idx) => {
         const card = document.createElement('div');
