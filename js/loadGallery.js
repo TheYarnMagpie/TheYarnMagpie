@@ -18,8 +18,7 @@ function renderGalleryCards(galleryData) {
     }
 
 // Load the detail card template (once) and add to body
-fetch('/components/gallery-detail-card.html')
->>>>>>> b868225a9c61c5e58123f37d17163d9e333db151
+fetch('../components/gallery-detail-card.html')
   .then(res => res.text())
   .then(html => {
     document.body.insertAdjacentHTML('beforeend', html);
