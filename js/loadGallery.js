@@ -27,7 +27,7 @@ fetch('/components/gallery-detail-card.html')
 
 // Función para renderizar las cards de la galería
 function renderGalleryCards(galleryData) {
-  const galleryContainer = document.getElementById('gallery-Container');
+  const galleryContainer = document.getElementById('gallery-container');
   galleryContainer.innerHTML = '';
   galleryData.forEach((item, idx) => {
     const card = document.createElement('div');
