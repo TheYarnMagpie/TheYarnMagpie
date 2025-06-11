@@ -1,3 +1,17 @@
+const debugBox = document.createElement('div');
+debugBox.style.background = '#ffeb3b';
+debugBox.style.color = '#222';
+debugBox.style.padding = '10px';
+debugBox.style.margin = '10px';
+debugBox.style.fontSize = '1.2em';
+debugBox.style.border = '2px solid #333';
+debugBox.id = 'debugBox';
+document.body.prepend(debugBox);
+
+function debug(msg) {
+  debugBox.innerHTML += `<div>${msg}</div>`;
+}
+
 // Use a dynamic base path for assets depending on where the page is being served
 const isSubpage = window.location.pathname.includes('/pages/');
 const galleryJsonPath = isSubpage ? '../data/gallery.json' : 'data/gallery.json';
@@ -10,7 +24,7 @@ function renderGalleryCards(galleryData) {
     galleryContainer.innerHTML = '';
     galleryData.forEach((item, idx) => {
         const card = document.createElement('div');
-        card.className = 'gallery-card';
+        card.className = 'gallery-detail-card';
         card.innerHTML = `
           <img src="${item.image}" alt="${item.title}" class="gallery-card-image" />
           <div class="card-content">
