@@ -10,7 +10,7 @@
         "image": "images/ejemplo2.jpg",
         "title": "Gorro Vintage",
         "description": "Gorro estilo vintage en tonos pastel, perfecto para cualquier ocasión.",
-        "tags"
+        "tags": ["hats", "pastel", "vintage"]
     },
         
     {

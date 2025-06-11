@@ -24,7 +24,7 @@ function renderGalleryCards(galleryData) {
     galleryContainer.innerHTML = '';
     galleryData.forEach((item, idx) => {
         const card = document.createElement('div');
-        card.className = 'gallery-detail-card';
+        card.className = 'gallery-card';
         card.innerHTML = `
           <img src="${item.image}" alt="${item.title}" class="gallery-card-image" />
           <div class="card-content">
