@@ -11,7 +11,7 @@ const basePath = window.location.pathname.includes('/TheYarnMagpie/')
 
 const head = document.head;
 
-['css/styles.css', 'css/gallery-styles.css', 'css/about.css', 'css/contact-form.css', 'css/header.css'].forEach(file => {
+['css/styles.css', 'css/gallery-styles.css', 'css/about.css', 'css/tools.css', 'css/contact-form.css', 'css/header.css'].forEach(file => {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
   link.href = basePath + file;
