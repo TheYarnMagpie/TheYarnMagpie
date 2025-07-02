@@ -1,0 +1,22 @@
+[
+    {
+        "image": "../images/gallery-project-basket.jpg",
+        "title": "TL Yarncrafts CAL Basket",
+        "description": "A useful stash basket worked in the round with bulky yarn held in two strands, using the waistcoat stitch",
+        "tags": ["home decor", "waistcoat stitch", "bulky"]
+    },
+    
+    {
+        "image": "../images/ejemplo2.jpg",
+        "title": "Gorro Vintage",
+        "description": "Gorro estilo vintage en tonos pastel, perfecto para cualquier ocasión.",
+        "tags": ["hats", "pastel", "vintage"]
+    },
+        
+    {
+        "image": "../images/ejemplo3.jpg",
+        "title": "Guantes sin Dedos",
+        "description": "Guantes cómodos y modernos, tejidos con hilo ecológico.",
+        "tags": ["guantes", "ecológico", "sin dedos"]
+    }
+]
