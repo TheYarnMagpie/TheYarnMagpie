@@ -52,7 +52,7 @@ function openGalleryDetail(item) {
 
 // Overlay close handler (close on X or when clicking the overlay background)
 document.addEventListener('click', function(e) {
-  const overlay = document.getElementById('galleryDetailOverlay');
+  const overlay = document.getElementById('gallerDetailOverlay');
   if (!overlay || !overlay.classList.contains('active')) return;
   if (
     e.target.id === 'galleryDetailOverlay' || // clicked overlay background

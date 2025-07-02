@@ -34,11 +34,11 @@ function openToolsDetail(item) {
   const overlay = document.getElementById('toolsDetailOverlay');
   if (!overlay) return;
 
-  document.getElementById('detailImage').src = item.image;
-  document.getElementById('detailImage').alt = item.title;
-  document.getElementById('detailTitle').textContent = item.title;
-  document.getElementById('detailDescription').textContent = item.description || '';
-  const tagsUl = document.getElementById('detailTags');
+  document.getElementById('toolsDetailImage').src = item.image;
+  document.getElementById('toolsDetailImage').alt = item.title;
+  document.getElementById('toolsDetailTitle').textContent = item.title;
+  document.getElementById('toolsDetailDescription').textContent = item.description || '';
+  const tagsUl = document.getElementById('toolsDetailTags');
   tagsUl.innerHTML = '';
   if (item.tags && Array.isArray(item.tags)) {
     item.tags.forEach(tag => {
@@ -56,7 +56,7 @@ document.addEventListener('click', function(e) {
   if (!overlay || !overlay.classList.contains('active')) return;
   if (
     e.target.id === 'toolsDetailOverlay' || // clicked overlay background
-    e.target.id === 'closeDetailBtn'          // clicked close button
+    e.target.id === 'closeToolsDetailBtn'          // clicked close button
   ) {
     overlay.classList.remove('active');
   }
@@ -78,12 +78,12 @@ fetch(toolsJsonPath)
   })
   .then(toolsData => {
     renderToolsCards(toolsData);
-    attachDetailButtons(toolsData);
+    attachToolsDetailButtons(toolsData);
   })
   .catch(err => {
     const toolsContainer = document.getElementById('tools-container');
     if (toolsContainer) {
-      toolsContainer.innerHTML = `<p style="color:red">Failed to load gallery: ${err.message}</p>`;
+      toolsContainer.innerHTML = `<p style="color:red">Failed to load tools: ${err.message}</p>`;
     }
     console.error('Tools load error:', err);
   });
