@@ -4,7 +4,7 @@ const toolsJsonPath = isSubpage ? '../data/tools.json' : 'data/tools.json';
 const detailCardPath = isSubpage ? '../components/tools-detail-card.html' : 'components/tools-detail-card.html';
 
 // Function to render gallery cards dynamically from JSON data
-function renderToolCards(toolsData) {
+function renderToolsCards(toolsData) {
     const toolsContainer = document.getElementById('tools-container');
     if (!toolsContainer) return;
     toolsContainer.innerHTML = '';
