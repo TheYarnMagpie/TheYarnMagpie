@@ -31,7 +31,7 @@ fetch(detailCardPath)
 
 // Function to open the gallery detail overlay with item data
 function openToolsDetail(item) {
-  const overlay = document.getElementById('ToolsDetailOverlay');
+  const overlay = document.getElementById('toolsDetailOverlay');
   if (!overlay) return;
 
   document.getElementById('detailImage').src = item.image;
