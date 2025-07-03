@@ -63,7 +63,7 @@ document.addEventListener('click', function(e) {
 });
 
 // Attach "See Details" button listeners after gallery renders
-function attachDetailButtons(toolsData) {
+function attachToolsDetailButtons(toolsData) {
   document.querySelectorAll('.see-details-btn').forEach((btn) => {
     const idx = btn.getAttribute('data-idx');
     btn.addEventListener('click', () => openToolsDetail(toolsData[idx]));
