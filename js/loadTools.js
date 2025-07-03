@@ -1,3 +1,5 @@
+
+
 // Use a dynamic base path for assets depending on where the page is being served
 const isSubpage = window.location.pathname.includes('/pages/');
 const toolsJsonPath = isSubpage ? '../data/tools.json' : 'data/tools.json';
