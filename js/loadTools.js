@@ -3,7 +3,7 @@ const isSubpage = window.location.pathname.includes('/pages/');
 const toolsJsonPath = isSubpage ? '../data/tools.json' : 'data/tools.json';
 const detailCardPath = isSubpage ? '../components/tools-detail-card.html' : 'components/tools-detail-card.html';
 
-// Function to render gallery cards dynamically from JSON data
+// Function to render tool cards dynamically from JSON data
 function renderToolsCards(toolsData) {
     const toolsContainer = document.getElementById('tools-container');
     if (!toolsContainer) return;
@@ -20,7 +20,7 @@ function renderToolsCards(toolsData) {
         `;
         toolsContainer.appendChild(card);
       });
-    }
+  }
 
 // Load the detail card template (once) and add to body
 fetch(detailCardPath)
@@ -62,7 +62,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// Attach "See Details" button listeners after gallery renders
+// Attach "See Details" button listeners after tools renders
 function attachToolsDetailButtons(toolsData) {
   document.querySelectorAll('.see-details-btn').forEach((btn) => {
     const idx = btn.getAttribute('data-idx');
