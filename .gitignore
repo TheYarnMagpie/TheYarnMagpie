@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Build output (future-proof)
+dist/
+.cache/
+
+# OS junk
+.DS_Store
+
+# Environment variables
+.env
