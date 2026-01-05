@@ -1,12 +1,12 @@
 {
   "name": "theyarnmagpie",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "scripts": {
-    "dev": "live-server --port=8080 --no-browser",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "live-server . --port=8080 --no-browser",
+    "test": "echo \"No tests yet\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
 }
