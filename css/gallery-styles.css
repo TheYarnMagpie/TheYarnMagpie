@@ -17,17 +17,20 @@
     transform: translateY(-5px);
 }
 
+/* Thumbnail image: fixed visual height, crops with object-fit */
 .gallery-card img {
     width: 100%;
-    height: auto;
+    height: 200px;         /* visual thumbnail height - tweak as desired */
+    object-fit: cover;     /* crop to fill the area while preserving aspect */
     display: block;
 }
 
+/* Card content spacing */
 .card-content {
     padding: 1rem;
 }
 
-.card-content h2 {
+.card-content h2, .card-content h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
@@ -35,4 +38,11 @@
 .card-content p {
     font-size: 1rem;
     color: #555;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  .gallery-card img {
+    height: 140px;
+  }
 }

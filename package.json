@@ -1,0 +1,13 @@
+{
+  "name": "theyarnmagpie",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "check": "bash pre-pr-check.sh",
+    "dev": "live-server . --port=8080 --no-browser",
+    "test": "echo \"No tests yet\""
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
