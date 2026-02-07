@@ -1,0 +1,1545 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.github/
+  workflows/
+    ci.yml
+components/
+  gallery-detail-card.html
+  head.html
+  header.html
+  tools-detail-card.html
+css/
+  about.css
+  colors.css
+  contact-form.css
+  gallery-details-card.css
+  gallery-styles.css
+  header.css
+  styles.css
+  tools-detail-card.css
+  tools.css
+data/
+  gallery.json
+  tools.json
+images/
+  featured-project-shawl.jpg
+  flower-mandala-earrings.jpg
+  gallery-project-basket.jpg
+  hyperbolic-coral-charm.jpg
+  magpie-yarn.png
+  tym-logo.png
+js/
+  loadGallery.js
+  loadHead.js
+  loadHeader.js
+  loadTools.js
+misc/
+  improvements-checklist.md
+pages/
+  about.html
+  contact-form.html
+  gallery.html
+  tools.html
+.gitignore
+CNAME
+data-deletion.html
+index.html
+package.json
+pre-pr-check.sh
+README.md
+start-ci.sh
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="README.md">
+## Hi there 👋
+
+<!--
+**TheYarnMagpie/TheYarnMagpie** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+
+Here are some ideas to get you started:
+
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
+</file>
+
+<file path="css/about.css">
+
+</file>
+
+<file path="css/colors.css">
+:root {
+  --feather-black: #2C2C2E;
+  --coal-dust: #3E3E41;
+  --mid-feather-grey: #B2B2B5;
+  --downy-grey: #DADADD;
+  --feather-white: #F5F5F5;
+  --wing-blue: #4682B4;
+  --tail-green: #3C9D88;
+  --copper-gleam: #B86F50;
+  --violet-sheen: #7A5CA0;
+  --sheen-gold: #C8A146;
+}
+</file>
+
+<file path="data/tools.json">
+[
+    {
+        "image": "../images/gallery-project-basket.jpg",
+        "title": "TL Yarncrafts CAL Basket",
+        "description": "A useful stash basket worked in the round with bulky yarn held in two strands, using the waistcoat stitch",
+        "tags": ["home decor", "waistcoat stitch", "bulky"]
+    },
+    
+    {
+        "image": "../images/ejemplo2.jpg",
+        "title": "Gorro Vintage",
+        "description": "Gorro estilo vintage en tonos pastel, perfecto para cualquier ocasión.",
+        "tags": ["hats", "pastel", "vintage"]
+    },
+        
+    {
+        "image": "../images/ejemplo3.jpg",
+        "title": "Guantes sin Dedos",
+        "description": "Guantes cómodos y modernos, tejidos con hilo ecológico.",
+        "tags": ["guantes", "ecológico", "sin dedos"]
+    }
+]
+</file>
+
+<file path=".gitignore">
+# Dependencies
+node_modules/
+
+# Build output (future-proof)
+dist/
+.cache/
+
+# OS junk
+.DS_Store
+
+# Environment variables
+.env
+</file>
+
+<file path="CNAME">
+www.theyarnmagpie.com
+</file>
+
+<file path="data-deletion.html">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>User Data Deletion Request – The Yarn Magpie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.6; padding: 2rem; max-width: 700px; margin: auto; }
+    h1 { color: #333; }
+    a { color: #0366d6; }
+    small { color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Request to Delete Your Data</h1>
+  <p>
+    In compliance with Facebook Platform Policies and data protection regulations,
+    users of <strong>The Yarn Magpie</strong> application may request deletion of
+    their data obtained through Facebook or Instagram integrations.
+  </p>
+
+  <p>To delete your data, please follow one of the options below:</p>
+
+  <ol>
+    <li>
+      Go to your Facebook account settings → <strong>Settings &amp; Privacy → Apps and Websites</strong>,
+      locate <em>The Yarn Magpie</em>, and remove its access.  
+      This will automatically delete the permissions granted to the app.
+    </li>
+    <li>
+      Alternatively, you can send an email to
+      <a href="mailto:theyarnmagpie.crochet@gmail.com">theyarnmagpie.crochet@gmail.com</a>
+      with the subject line <strong>Data Deletion Request</strong> and include your
+      Facebook or Instagram username. We will process your request within 30 days.
+    </li>
+    <li>
+      You may also contact us through our
+      <a href="https://theyarnmagpie.github.io/contact">contact form</a>
+      and mention that your message concerns data deletion.
+    </li>
+  </ol>
+
+  <p>
+    Once your request has been processed, you will receive a confirmation email
+    that your data has been permanently deleted.
+  </p>
+
+  <small>Last updated: November 2025</small>
+</body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "theyarnmagpie",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "check": "bash pre-pr-check.sh",
+    "dev": "live-server . --port=8080 --no-browser",
+    "test": "echo \"No tests yet\""
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
+</file>
+
+<file path="pre-pr-check.sh">
+#!/usr/bin/env bash
+set -e
+
+echo "🔍 Pre-PR sanity check starting..."
+echo
+
+# 1. Check package.json is valid JSON
+echo "1️⃣ Checking package.json JSON validity..."
+node -e "JSON.parse(require('fs').readFileSync('package.json','utf8'))"
+echo "✅ package.json is valid JSON"
+echo
+
+# 2. Check npm can read package.json
+echo "2️⃣ Checking npm can read package.json..."
+npm pkg get name version >/dev/null
+echo "✅ npm can read package.json"
+echo
+
+# 3. Validate package-lock.json consistency
+echo "3️⃣ Validating package-lock.json consistency..."
+npm install --package-lock-only --ignore-scripts >/dev/null
+echo "✅ package-lock.json is valid & in sync"
+echo
+
+# 4. Optional full install check (best effort)
+echo "4️⃣ Optional npm ci check (may fail on Android shared storage)..."
+if npm ci >/dev/null 2>&1; then
+  echo "✅ npm ci succeeded"
+else
+  echo "⚠️ npm ci failed — likely Android symlink/storage issue"
+  echo "ℹ️ This does NOT necessarily mean your files are invalid"
+fi
+
+echo
+echo "🎉 Pre-PR checks completed"
+</file>
+
+<file path="start-ci.sh">
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Start dev server in background (logs to dev.log)
+npm run dev &> dev.log &
+PID=$!
+trap 'kill $PID 2>/dev/null || true' EXIT
+
+# Wait up to 30s for server to respond
+for i in $(seq 1 30); do
+  if curl -sSf http://127.0.0.1:8080 >/dev/null 2>&1; then
+    echo "Server ready"
+    break
+  fi
+  sleep 1
+done
+
+# Run a smoke request
+if curl -sSf http://127.0.0.1:8080 >/dev/null 2>&1; then
+  echo "Smoke test passed"
+else
+  echo "Smoke test failed — check dev.log for details"
+  cat dev.log || true
+  exit 1
+fi
+</file>
+
+<file path=".github/workflows/ci.yml">
+
+</file>
+
+<file path="css/tools-detail-card.css">
+.tools-detail-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tools-detail-overlay.active {
+    display: flex;
+  }
+
+  .tools-detail-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    max-width: 90vw;
+    width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+    position: relative;
+    animation: fadeIn 0.3s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95);}
+    to   { opacity: 1; transform: scale(1);}
+  }
+
+.close-tools-detail {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #444;
+  cursor: pointer;
+}
+
+.tools-detail-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.tools-detail-content h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+#toolsDetailTags {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#toolsDetailTags li {
+  background: #f0e6f6;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.95em;
+}
+</file>
+
+<file path="css/tools.css">
+#tools-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.tools-card {
+    background-color: var(--downy-grey);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.tools-card:hover {
+    transform: translateY(-5px);
+}
+
+.tools-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tools-content {
+    padding: 1rem;
+}
+
+.tools-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.tools-content p {
+    font-size: 1rem;
+    color: #555;
+}
+</file>
+
+<file path="js/loadHead.js">
+document.addEventListener("DOMContentLoaded", function () {
+  const head = document.getElementsByTagName("head")[0];
+  const isSubpage = window.location.pathname.includes('/pages/');
+  const path = isSubpage ? '../components/head.html' : 'components/head.html';
+
+  fetch(path)
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return response.text();
+    })
+    .then(data => {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = data;
+
+      [...tempDiv.children].forEach(el => head.appendChild(el));
+    })
+    .catch(error => {
+      console.error('Error loading head:', error);
+    });
+});
+</file>
+
+<file path="misc/improvements-checklist.md">
+# TheYarnMagpie Site Code Quality Improvement Checklist
+
+This checklist is organized by area (HTML, CSS, JS, Accessibility, Performance, etc.) and by file/component where appropriate.  
+Check off each item as you address it.
+
+---
+
+## 1. General HTML
+
+- [ ] Validate all HTML files for syntax errors and semantic correctness.
+- [ ] Ensure all images have meaningful `alt` text (from JSON where dynamic).
+- [x] Use semantic elements (`<nav>`, `<main>`, `<header>`, `<section>`, `<article>`, etc.).
+- [ ] Ensure every page has a unique `<title>` and `<meta description>`.
+- [ ] Avoid duplicate IDs, especially when cloning templates.
+- [ ] Confirm all forms have properly associated `<label>`s.
+- [ ] Ensure all links and buttons are keyboard accessible.
+
+---
+
+## 2. Components
+
+### `components/gallery-detail-card.html`
+- [ ] Use `<template>` tag if not already used.
+- [ ] Ensure placeholders for alt text, title, description, etc., are filled dynamically.
+- [ ] No duplicate IDs in template structure.
+
+### `components/head.html` & `header.html`
+- [x] All required meta tags present (charset, viewport, etc.).
+- [x] Navigation uses `<nav>`, with logical and accessible structure.
+- [ ] Keyboard navigation and skip-to-content link available.
+
+---
+
+## 3. CSS
+
+- [ ] Use a consistent naming convention (consider BEM or similar).
+- [ ] Remove any unused or duplicate styles.
+- [ ] Use CSS custom properties for shared colors in `colors.css`.
+- [ ] Ensure all color combinations meet WCAG contrast standards.
+- [ ] Add/verify responsive breakpoints for all layouts (`@media` queries).
+- [ ] Check for touch targets and spacing for mobile usability.
+- [ ] Consider combining and minifying CSS for production.
+
+---
+
+## 4. JavaScript
+
+### `js/loadGallery.js`
+- [ ] Use `fetch` with async/await for clarity and error handling.
+- [ ] Validate and sanitize all data from `gallery.json` before injecting into DOM.
+- [ ] Show loading state while fetching gallery data.
+- [ ] Show user-friendly error message if gallery fails to load.
+- [ ] Ensure alt text and captions are set from JSON.
+- [ ] Lazy-load images for performance (e.g., `loading="lazy"`).
+
+### `js/loadHead.js` & `loadHeader.js`
+- [ ] Inject components before visible content to avoid FOUC.
+- [ ] Error handling for component loading failures.
+- [ ] Ensure navigation remains accessible after dynamic injection.
+
+---
+
+## 5. Data
+
+### `data/gallery.json`
+- [ ] Validate JSON (no syntax errors, well-structured).
+- [ ] All items include: image path, alt text, title, description (and tags/categories, if used).
+- [ ] Descriptive property names.
+- [ ] Consider fields for sort order, tags, or categories if filtering will be added.
+
+---
+
+## 6. Accessibility
+
+- [ ] All images have descriptive alt text.
+- [ ] Color contrast meets WCAG AA minimums.
+- [ ] All interactive elements are reachable and usable via keyboard.
+- [ ] Forms are fully accessible (labels, error messages, etc.).
+- [ ] Use ARIA attributes where appropriate.
+
+---
+
+## 7. Performance
+
+- [ ] Optimize all images for web (compression, correct sizing).
+- [ ] Defer loading of non-critical JS.
+- [ ] Lazy-load images in gallery.
+- [ ] Minify CSS and JavaScript for production.
+
+---
+
+## 8. SEO
+
+- [ ] Ensure each page has a unique, descriptive `<title>` and `<meta description>`.
+- [ ] Use semantic HTML and heading hierarchy.
+- [ ] Use descriptive filenames for images and assets.
+
+---
+
+## 9. User Experience
+
+- [ ] Show loading indicators for dynamic content.
+- [ ] Display friendly error messages on failures.
+- [ ] Ensure consistent layout and navigation across all pages.
+- [ ] Test all layouts on mobile, tablet, and desktop.
+- [ ] Provide feedback on form submissions.
+
+---
+
+## 10. Maintainability
+
+- [ ] Comment complex code sections.
+- [ ] Keep components and styles modular.
+- [ ] Document how to add new gallery items via JSON.
+
+---
+
+**Tip:**  
+Review each checklist item after relevant file changes. This will help maintain high code quality across your project.
+
+- [ ] Overlay Accessibility
+The overlay does not currently trap focus or respond to "Esc" key to close. Consider adding accessibility improvements in the future.
+</file>
+
+<file path="pages/tools.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tools | TheYarnMagpie</title>
+  <script src="../js/loadHead.js"></script>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  
+  <main class="tools-content">
+    <section>
+      <div>
+        <h2>Useful Crochet Tools and Cheatsheets</h2>
+        <h3>Crochet Terms Glossary</h3>
+      </div>
+      
+      <div id="tools-container"></div>
+    </section>
+  </main>
+
+  <script src="../js/loadHeader.js"></script>
+  <script src="../js/loadTools.js"></script>
+
+</body>
+</file>
+
+<file path="css/contact-form.css">
+/* styles for contact form */
+
+#contact-info {
+  background-color: var(--downy-grey);
+}
+
+#contact-info h3 {
+  text-align: center;
+}
+
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+#contact-form h3 {
+  text-align: center;
+}
+
+#contact-form label {
+  font-weight: bold;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#contact-form button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#contact-form button:hover {
+  background-color: #218838;
+}
+</file>
+
+<file path="css/gallery-styles.css">
+#gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.gallery-card {
+    background-color: var(--downy-grey);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Thumbnail image: fixed visual height, crops with object-fit */
+.gallery-card img {
+    width: 100%;
+    height: 200px;         /* visual thumbnail height - tweak as desired */
+    object-fit: cover;     /* crop to fill the area while preserving aspect */
+    display: block;
+}
+
+/* Card content spacing */
+.card-content {
+    padding: 1rem;
+}
+
+.card-content h2, .card-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  .gallery-card img {
+    height: 140px;
+  }
+}
+</file>
+
+<file path="pages/about.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About | TheYarnMagpie</title>
+  <script src="../js/loadHead.js"></script>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  
+  <main class="about-content">
+    <section class="about-page-section">
+      <div>
+        <h2>About Me</h2>
+        <p>Hi! I'm TheYarnMagpie, a passionate crochet artist who loves turning yarn into magic. This space is where I share my creations, patterns, and stories behind the stitches.</p>
+        <p>From cozy mittens to whimsical accessories, I strive to create crochet that's beautiful, practical, and a little bit quirky.</p>
+        <p>Crochet is my passion since 2012, when I picked up a hook for the first time during vacations and made my first chains. Since then, I have made many projects using many kinds of stitches, from the simple basics up to intricate designs and lacework.</p>
+        <p>Established in Sept. 2024, TheYarnMagpie is my creative corner for crochet enthusiasts, yarnaddicts and accessory shoppers alike - from crochet tutorials over patterns, tips and tricks, all the way to finished items for purchase, you will find a lot of interesting content on my site.</p>
+        <p>Thanks for stopping by!</p>
+      </div>
+    </section>
+  </main>
+  
+  <script src="../js/loadHeader.js"></script>
+</body>
+</file>
+
+<file path="components/gallery-detail-card.html">
+<div class="gallery-detail-overlay" id="galleryDetailOverlay">
+    <div class="gallery-detail-card">
+        <button class="close-detail" id="closeGalleryDetailBtn" aria-label="Close details">&times;</button>
+        <img id="galleryDetailImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+         alt="Gallery item image" class="detail-image" />
+        <div class="detail-content">
+            <h2 id="galleryDetailTitle"></h2>
+            <p id="galleryDetailDescription"></p>
+            <ul id="galleryDetailTags"></ul>
+        </div>
+    </div>
+</div>
+</file>
+
+<file path="components/tools-detail-card.html">
+<div class="tools-detail-overlay" id="toolsDetailOverlay">
+    <div class="tools-detail-card">
+        <button class="close-detail" id="closeToolsDetailBtn" aria-label="Close tool details">&times;</button>
+        <img id="toolsDetailImage" src="" alt="Tools item image" class="tools-detail-image" />
+        <div class="detail-content">
+            <h2 id="toolsDetailTitle"></h2>
+            <p id="toolsDetailDescription"></p>
+            <ul id="toolsDetailTags"></ul>
+        </div>
+    </div>
+</div>
+</file>
+
+<file path="css/gallery-details-card.css">
+.gallery-detail-overlay {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-detail-overlay.active {
+  display: flex;
+}
+
+.gallery-detail-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  max-width: 90vw;
+  width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  position: relative;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.close-detail {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #444;
+  cursor: pointer;
+}
+
+#gallery-detail-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.detail-content h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+#galleryDetailTags {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#galleryDetailTags li {
+  background: #4682B4;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.95em;
+}
+</file>
+
+<file path="data/gallery.json">
+[{
+  "image": "../images/gallery-project-basket.jpg",
+  "title": "TL Yarncrafts CAL Basket",
+  "description": "A useful stash basket worked in the round with bulky yarn held in two strands, using the waistcoat stitch",
+  "tags": ["home decor",
+    "waistcoat stitch",
+    "bulky acrylic"]
+},
+
+  {
+    "image": "../images/flower-mandala-earrings.jpg",
+    "title": "Flower Mandala Earrings",
+    "description": "Crocheted earrings with 7-petal flowers, reinforced with wire, and a small bead at the tip of each petal.",
+    "tags": ["jewelry",
+      "bead crochet",
+      "fine yarn/lace"]
+  },
+
+  {
+    "image": "../images/hyperbolic-coral-charm.jpg",
+    "title": "Hyperbolic Plane Coral ball charm",
+    "description": "Started as a round, disc-shaped ring and increasing stitches exponentially, this coral-like shape proves that hyperbolic planes (surfaces with negative curvature) can actually be physically created - with crochet!",
+    "tags": ["accessories",
+      "geometry crochet",
+      "fine cotton"]
+  }]
+</file>
+
+<file path="js/loadHeader.js">
+document.addEventListener("DOMContentLoaded", function () {
+  const headerPlaceholder = document.getElementById('header-placeholder');
+  if (!headerPlaceholder) return;
+
+  // Determine the correct path to header.html based on the current page's location
+  const path = window.location.pathname.includes('/pages/') ? '../components/header.html' : 'components/header.html';
+
+const basePath = window.location.pathname.includes('/TheYarnMagpie/') 
+  ? '/TheYarnMagpie/' 
+  : '/';
+
+const head = document.head;
+
+['css/styles.css', 'css/gallery-styles.css', 'css/about.css', 'css/tools.css', 'css/contact-form.css', 'css/header.css'].forEach(file => {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = basePath + file;
+  head.appendChild(link);
+});
+
+// Optional: add the font link too
+const font = document.createElement('link');
+font.rel = 'stylesheet';
+font.href = 'https://fonts.googleapis.com/css2?family=Gwendolyn&display=swap';
+head.appendChild(font);
+
+  fetch(path)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      headerPlaceholder.innerHTML = data;
+
+      // Adjust all data-href links to work with current base path
+      const basePath = window.location.pathname.includes('/TheYarnMagpie/') ? '/TheYarnMagpie/' : '/';
+      document.querySelectorAll('a[data-href]').forEach(link => {
+        const dataHref = link.getAttribute('data-href') || '';
+
+        // Basic hardening: ignore empty values and disallow dangerous URL schemes
+        const trimmed = dataHref.trim();
+        if (!trimmed) {
+          return;
+        }
+        const lower = trimmed.toLowerCase();
+        if (lower.startsWith('javascript:') || lower.startsWith('data:') || lower.startsWith('vbscript:')) {
+          return;
+        }
+
+        // Build a safe URL relative to the current origin and basePath
+        let safePath = trimmed;
+        if (safePath.startsWith('/')) {
+          safePath = safePath.substring(1);
+        }
+
+        try {
+          const url = new URL(basePath + safePath, window.location.origin);
+          // Ensure we stay on the same origin
+          if (url.origin === window.location.origin) {
+            link.href = url.toString();
+          }
+        } catch (e) {
+          // If constructing the URL fails, leave the link unchanged
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error loading header:', error);
+    });
+});
+</file>
+
+<file path="components/header.html">
+<header>
+  <div class="header-container">
+    <div class="brand">
+      <img src="/TheYarnMagpie/images/magpie-yarn.png" alt="magpie with a yarn ball" class="magpie-yarn">
+        <h1>TheYarnMagpie</h1>
+      </div>
+      <p class="tagline">creative crochet designs & handmade magic</p>
+   
+    <!-- Navigation Bar -->
+    <nav>      
+        <ul>
+            <li><a data-href="index.html">Home</a></li>
+            <li><a data-href="pages/about.html">About</a></li>
+            <li><a data-href="pages/gallery.html">Gallery</a></li>
+            <li><a data-href="pages/tools.html">Tools</a></li>
+            <li><a data-href="pages/contact-form.html">Contact</a></li>
+        </ul>
+    </nav>
+  </div>
+</header>
+</file>
+
+<file path="js/loadTools.js">
+// Use a dynamic base path for assets depending on where the page is being served
+const isSubpage = window.location.pathname.includes('/pages/');
+const toolsJsonPath = isSubpage ? '../data/tools.json' : 'data/tools.json';
+const detailCardPath = isSubpage ? '../components/tools-detail-card.html' : 'components/tools-detail-card.html';
+
+// Load the overlay once, then load data and render cards
+fetch(detailCardPath)
+  .then(res => res.text())
+  .then(html => {
+    document.body.insertAdjacentHTML('beforeend', html);
+    fetch(toolsJsonPath)
+      .then(r => r.json())
+      .then(toolsData => {
+        renderToolCards(toolsData);
+        attachDetailButtons(toolsData);
+      });
+  });
+
+function renderToolCards(toolsData) {
+  const toolsContainer = document.getElementById('tools-container');
+  toolsContainer.innerHTML = '';
+  toolsData.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'tools-card';
+    card.innerHTML = `
+      <img src="${item.image}" alt="${item.title}" class="tools-card-image" />
+      <div class="card-content">
+        <h3>${item.title}</h3>
+        <button class="see-details-btn" data-idx="${idx}">See Details</button>
+      </div>
+    `;
+    toolsContainer.appendChild(card);
+  });
+}
+
+function attachDetailButtons(toolsData) {
+  document.querySelectorAll('.see-details-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = btn.getAttribute('data-idx');
+      openToolsDetail(toolsData[idx]);
+    });
+  });
+}
+
+function openToolsDetail(item) {
+  const overlay = document.getElementById('toolsDetailOverlay');
+  if (!overlay) return;
+  document.getElementById('toolsDetailImage').src = item.image;
+  document.getElementById('toolsDetailImage').alt = item.title;
+  document.getElementById('toolsDetailTitle').textContent = item.title;
+  document.getElementById('toolsDetailDescription').textContent = item.description || '';
+  const tagsUl = document.getElementById('toolsDetailTags');
+  tagsUl.innerHTML = '';
+  if (item.tags && Array.isArray(item.tags)) {
+    item.tags.forEach(tag => {
+      const li = document.createElement('li');
+      li.textContent = tag;
+      tagsUl.appendChild(li);
+    });
+  }
+  overlay.classList.add('active');
+}
+
+document.addEventListener('click', function(e) {
+  const overlay = document.getElementById('toolsDetailOverlay');
+  if (!overlay || !overlay.classList.contains('active')) return;
+  if (
+    e.target.id === 'toolsDetailOverlay' ||
+    e.target.id === 'closeToolsDetailBtn'
+  ) {
+    overlay.classList.remove('active');
+  }
+});
+</file>
+
+<file path="index.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home | TheYarnMagpie</title>
+  <script src="js/loadHead.js"></script>
+</head>
+
+<body>
+    
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section id="site-intro">
+            <h2>Yarnaddicts, welcome!</h2>
+            <p>If you like to crochet, love yarny things and fiber arts in general, you have landed on the right site...</p>
+        </section>
+
+        <section id="about">
+            <h2>About The Yarn Magpie</h2>
+            <p>Hi, I'm Helen, the yarn-loving creator behind TheYarnMagpie. I specialize in crafting unique crochet designs, sharing tips and tricks, and celebrating the joy of handmade creations. Whether you're a fellow maker or just yarn-curious, you're most welcome here!</p>
+            <a class="more-about-link" href="pages/about.html">More About TheYarnMagpie</a>
+        </section>
+
+        <section id="featured-project">
+            <h2>Featured Project</h2>
+            <p><strong>Montego Shawl</strong></p>
+            <p>Worked in a triangle corner-to-corner, this shawl is designed to keep you cozy and stylish in the cooler spring or autumn evenings. Perfect for yarn enthusiasts looking for a mindless project that works up quickly.</p>
+            
+            <img class="feature-img" src="images/featured-project-shawl.jpg" alt="Spring Shawl">
+        </section>
+
+        <section id="site-overview">
+            <h2>What You'll Find Here</h2>
+            <ul>
+                <li>Original crochet patterns (free and paid)</li>
+                <li>Tips and tutorials for all skill levels</li>
+                <li>Gallery showcasing finished projects</li>
+                <li>Links to my social media and online shop</li>
+                <li>Updates and musings on the crochet journey</li>
+            </ul>
+        </section>
+
+        <section id="call-to-action">
+            <h2>Join the Yarn Journey</h2>
+            <p>Explore the <a href="pages/gallery.html">Gallery</a> to see my latest creations, follow me on <a href="https://www.instagram.com/theyarnmagpie">Instagram</a> for daily updates, or support my work through <a href="buymeacoffee.com/theyarnmagpie">Buy Me a Coffee</a>. Your support keeps the yarn flowing!</p>
+        </section>
+
+        <section id="inspiration">
+            <h2>Yarn Thoughts</h2>
+            <blockquote>
+                "Crochet is like painting with yarn. I love combining color, texture, and technique to create cozy little bits of magic."
+            </blockquote>
+        </section>
+
+        <section id="social-section">
+            <h2>Follow Me on Social Media</h2>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/theyarnmagpie" class="social-icons instagram" target="_blank">📷 Instagram</a>
+                <a href="https://www.youtube.com/@theyarnmagpie" class="social-icons youtube" target="_blank">▶ YouTube</a>
+                <a href="https://www.tiktok.com/@theyarnmagpie" class="social-icons tiktok" target="_blank">🎵 TikTok</a>
+                <a href="https://www.threads.net/@theyarnmagpie" class="social-icons threads" target="_blank">Threads</a>
+            </div>
+        </section>
+
+        <section class="buy-coffee">
+            <h2>Support My Crochet Creations</h2>
+            <p>If you enjoy my work, consider buying me a coffee!</p>
+    
+            <!-- Buy Me a Coffee Button -->
+            <a href="https://www.buymeacoffee.com/theyarnmagpie" class="bmc-button" target="_blank">☕ Buy Me a Coffee</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TheYarnMagpie</p>
+    </footer>
+
+    <script src="./js/loadHeader.js"></script>
+
+</body>
+</html>
+</file>
+
+<file path="css/styles.css">
+body, html {
+   flex-direction: column;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: var(--mid-feather-grey)
+}
+
+main {
+    margin: 0;
+}
+
+a {
+  color: var(--wing-blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--violet-sheen);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Sections of main page */
+section {
+    margin: 1rem;
+    padding: 1.5rem;
+    background-color: #2C2C2E;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px 0 #C8A146;
+}
+
+section h2 {
+    font-family: "Cormorant Upright", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--feather-white);
+    border-bottom: 3px solid var(--copper-gleam);
+    padding-bottom: 0.3rem;
+}
+
+section p {
+    font-size: 1.6rem;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    color: #F5F5F5;
+}
+
+section ul li {
+    padding: 0 0 0 5px;
+    font-size: 1.8rem;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    color: #F5F5F5;
+}
+
+blockquote {
+    font-style: italic;
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-left: 4px solid var(--copper-gleam);
+    color: var(--tail-green)
+}
+
+.more-about-link {
+  font-style: italic;
+  font-weight: normal;
+}
+
+.feature-img {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Social pages links section  */
+#social-section {
+    text-align: center;
+}
+
+/* Social Media Buttons */
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;  /* Allows buttons to break into new rows */
+    flex-direction: column;  /* Stacks items vertically first */
+    justify-content: space-beteen;
+    align-items: center; /* Centers content horizontally */
+    gap: 10px; /* Spacing between buttons */
+    height: 120px; /* Adjust based on button size */
+    max-width: 200px; /* Prevents excessive stretching */
+}
+
+.social-icons a {
+    width: 45%; /* Two buttons per row */
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Platform-Specific Colors */
+.instagram { background-color: #E4405F; }
+.youtube { background-color: #FF0000; }
+.tiktok { background-color: #000000; }
+.threads { background-color: #1DA1F2; }
+
+.bmc-button {
+    display: inline-block;
+    background-color: var(--wing-blue);
+    color: var(--feather-white);
+    border: none;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    text-decoration: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.bmc-button:hover {
+    background-color: var(--violet-sheen);
+}
+</file>
+
+<file path="components/head.html">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support My Crochet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/TheYarnMagpie/css/colors.css">
+    <link rel="stylesheet" href="/TheYarnMagpie/css/styles.css">  <!-- for pages in /pages/ -->
+    <link rel="stylesheet" href="/TheYarnMagpie/css/styles.css">     <!-- for index.html in root -->
+    <link rel="stylesheet" href="/TheYarnMagpie/css/header.css">  <!-- Link to header styles -->
+    <link rel="stylesheet" href="/TheYarnMagpie/css/gallery-styles.css">
+    <link rel="stylesheet" href="/TheYarnMagpie/css/gallery-details-card.css">
+    <link rel="stylesheet" href="/TheYarnMagpie/css/tools.css">
+    <link rel="stylesheet" href="/TheYarnMagpie/css/tools-details-card.css">
+    <link rel="stylesheet" href="/TheYarnMagpie/css/contact-form.css">
+
+    <script src="/js/loadHead.js"></script>
+</file>
+
+<file path="css/header.css">
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #2C2C2E;
+    border-bottom: 2px solid #C8A146;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2px;
+}
+
+.brand .magpie-yarn {
+  height: 150px; /* Adjust as needed */
+  width: auto;
+}
+
+.brand h1 {
+  margin: 0;
+  padding: 0.25rem 0;
+  font-size: 72px;
+  color: var(--feather-white);
+  text-align: center;
+  font-family: "Gwendolyn", cursive;
+}
+
+.header-container .tagline {
+  margin: 0.2em 0 0.2em 0;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: var(--tail-green);
+  text-shadow: 0.5px 0.5px var(--feather-white);
+  text-align: center;
+}
+
+/* Navigation Bar */
+nav {
+    background: #3E3E41;
+    box-shadow: 0 4px 6px 0 #C8A146;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 1em 2em;
+    color: var(--wing-blue);
+    text-shadow: 2px 2px var(--feather-white)
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: space-between;
+}
+</file>
+
+<file path="pages/contact-form.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact | TheYarnMagpie</title>
+  <script src="../js/loadHead.js"></script>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+  
+  <main>
+  <section>  
+    <div>
+      <h2>Contact TheYarnMagpie</h2>
+      <p>Have any questions or want to collaborate? Drop a message below!</p>
+    </div>
+
+    <div id="contact-info">
+      <h3>Contact Information</h3>
+      <p>Email: <a href="mailto:theyarnmagpie.crochet@gmail.com">theyarnmagpie.crochet@gmail.com</a></p>
+      <p>Follow me on social media for updates and more!</p>
+      <!-- Add social media links here -->
+    </div>
+
+    <div id="contact-form">
+      <h3>Send a Message</h3>
+      
+<iframe
+  src="https://theyarnmagpie.fillout.com/contact"
+  width="100%"
+  height="800"
+  style="border: none;">
+</iframe>
+      
+      <!--
+      <form action="https://formspree.io/f/xldnbenv" method="POST">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+         Inquiry Type dropdown 
+        <label for="inquiry">Inquiry Type:</label>
+        <select id="inquiry" name="inquiry" required>
+          <option value="">--Please choose an option--</option>
+          <option value="General Question">General Question</option>
+          <option value="Custom Order">Custom Order</option>
+          <option value="Feedback">Feedback</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+      -->
+    </div>
+    </section>
+  </main>
+  <script src="../js/loadHeader.js"></script>
+</body>
+</html>
+</file>
+
+<file path="js/loadGallery.js">
+// Use a dynamic base path for assets depending on where the page is being served
+const isSubpage = window.location.pathname.includes('/pages/');
+const galleryJsonPath = isSubpage ? '../data/gallery.json' : 'data/gallery.json';
+const detailCardPath = isSubpage ? '../components/gallery-detail-card.html' : 'components/gallery-detail-card.html';
+
+// Load the overlay HTML ONCE, then load data and render cards
+fetch(detailCardPath)
+  .then(res => res.text())
+  .then(html => {
+    document.body.insertAdjacentHTML('beforeend', html);
+    // Now that the overlay is present, fetch data and render cards
+    fetch(galleryJsonPath)
+      .then(r => r.json())
+      .then(galleryData => {
+        renderGalleryCards(galleryData);
+        attachDetailButtons(galleryData);
+      });
+  });
+
+// Render gallery cards inside the gallery-container
+function renderGalleryCards(galleryData) {
+  const galleryContainer = document.getElementById('gallery-container');
+  galleryContainer.innerHTML = '';
+  galleryData.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'gallery-card';
+    card.innerHTML = `
+      <img src="${item.image}" alt="${item.title}" class="gallery-card-image" />
+      <div class="card-content">
+        <h3>${item.title}</h3>
+        <button class="see-details-btn" data-idx="${idx}">See Details</button>
+      </div>
+    `;
+    galleryContainer.appendChild(card);
+  });
+}
+
+// Attach event listeners to each "See Details" button
+function attachDetailButtons(galleryData) {
+  document.querySelectorAll('.see-details-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = btn.getAttribute('data-idx');
+      openGalleryDetail(galleryData[idx]);
+    });
+  });
+}
+
+// Populate and show the overlay
+function openGalleryDetail(item) {
+  const overlay = document.getElementById('galleryDetailOverlay');
+  if (!overlay) return;
+  document.getElementById('galleryDetailImage').src = item.image;
+  document.getElementById('galleryDetailImage').alt = item.title;
+  document.getElementById('galleryDetailTitle').textContent = item.title;
+  document.getElementById('galleryDetailDescription').textContent = item.description || '';
+  const tagsUl = document.getElementById('galleryDetailTags');
+  tagsUl.innerHTML = '';
+  if (item.tags && Array.isArray(item.tags)) {
+    item.tags.forEach(tag => {
+      const li = document.createElement('li');
+      li.textContent = tag;
+      tagsUl.appendChild(li);
+    });
+  }
+  overlay.classList.add('active');
+}
+
+// Overlay close handler (close on X or when clicking the overlay background)
+document.addEventListener('click', function(e) {
+  const overlay = document.getElementById('galleryDetailOverlay');
+  if (!overlay || !overlay.classList.contains('active')) return;
+  if (
+    e.target.id === 'galleryDetailOverlay' ||
+    e.target.id === 'closeGalleryDetailBtn'
+  ) {
+    overlay.classList.remove('active');
+  }
+});
+</file>
+
+<file path="pages/gallery.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crochet Gallery  TheYarnMagpie</title>
+    <script src="../js/loadHead.js"></script>
+
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+      <section>
+        <div>
+          <h2>TheYarnMagpie Crochet Gallery</h2>
+          <p>Take a peek at some of my recent creations!</p>
+        </div>
+
+        <div id="gallery-container"></div>
+
+      </section>
+    </main>
+
+    <script src="../js/loadHeader.js"></script>
+    <script src="../js/loadGallery.js"></script>
+
+</body>
+</html>
+</file>
+
+</files>
