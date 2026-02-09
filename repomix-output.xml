@@ -49,6 +49,7 @@ components/
   gallery-detail-card.html
   head.html
   header.html
+  nest-filter-bar.html
   tool-detail-card.html
 css/
   about.css
@@ -58,6 +59,7 @@ css/
   gallery-details-card.css
   gallery-styles.css
   header.css
+  nest-filter.css
   styles.css
   tool-detail-card.css
   tools.css
@@ -79,6 +81,7 @@ js/
   loadHead.js
   loadHeader.js
   loadTools.js
+  pillarFilter.js
   utils.js
 misc/
   BLOGPOST_PIPELINE.md
@@ -136,6 +139,15 @@ The **Waistcoat Stitch** (also known as the Knit Stitch) is one of my favorite t
 Keep your tension **loose**. Because you are inserting the hook into the "V" of the stitch below rather than the top loops, it can get tight very quickly!
 </file>
 
+<file path="components/nest-filter-bar.html">
+<div class="nest-filter-wrapper">
+  <button class="nest-filter-btn active" data-pillar="all">All Nests</button>
+  <button class="nest-filter-btn" data-pillar="Maker's Studio">The Maker's Studio</button>
+  <button class="nest-filter-btn" data-pillar="Strategist's Loom">The Strategist's Loom</button>
+  <button class="nest-filter-btn" data-pillar="Collector's Vault">The Collector's Vault</button>
+</div>
+</file>
+
 <file path="components/tool-detail-card.html">
 <div id="toolDetailOverlay" class="details-overlay">
     <div class="tool-detail-card">
@@ -153,116 +165,6 @@ Keep your tension **loose**. Because you are inserting the hook into the "V" of 
 
 </file>
 
-<file path="css/blog.css">
-/* --- BLOG LIST VIEW --- */
-#blog-list-container {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 20px;
-}
-
-.blog-card {
-    display: flex;
-    background: #f9f9f9 !important; /* Force light background */
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    overflow: hidden;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-    height: 200px;
-}
-
-/* FORCE TEXT COLORS TO BE VISIBLE */
-.blog-card-content h3 {
-    color: #222 !important; /* Dark charcoal */
-    margin: 0 0 10px 0;
-}
-
-.blog-card-content p {
-    color: #444 !important; /* Dark grey */
-    font-size: 0.95rem;
-}
-
-.blog-pillar-tag {
-    color: #d4a373 !important; /* Your Peach color */
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-}
-
-.blog-card-image {
-    width: 30%;
-    object-fit: cover;
-    background: #eee;
-}
-
-/* --- BLOG POST / ARTICLE VIEW --- */
-.blog-article-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    color: #333 !important; /* Force dark text for article body */
-}
-
-#article-body {
-    line-height: 1.8;
-}
-
-/* Fix for Markdown headers if they are appearing white */
-#article-body h1, #article-body h2, #article-body h3 {
-    color: #222 !important;
-}
-
-/* --- THE PILLAR CTA BOX --- */
-.pillar-cta {
-    margin-top: 50px;
-    padding: 30px;
-    background: #ffffff !important;
-    border: 2px solid #eee;
-    border-radius: 12px;
-    text-align: center;
-}
-
-/* Specific Top Borders */
-.pillar-cta.vault { border-top: 6px solid #4a4e69 !important; }
-.pillar-cta.studio { border-top: 6px solid #d4a373 !important; }
-.pillar-cta.loom { border-top: 6px solid #84a59d !important; }
-
-.pillar-cta h3 { color: #222 !important; }
-
-/* THE PEACH BUTTON */
-.pillar-cta .bmc-button {
-    display: inline-block;
-    background-color: #d4a373 !important; /* Peach */
-    color: #ffffff !important; /* White text on peach button */
-    padding: 12px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-/* Mobile Fix */
-@media (max-width: 600px) {
-    .blog-card { flex-direction: column; height: auto; }
-    .blog-card-image { width: 100%; height: 180px; }
-}
-
-/* Ensures images inside blog posts don't overflow and look consistent */
-#article-body img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto; /* Centers the image with spacing */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-</file>
-
 <file path="css/colors.css">
 :root {
   --feather-black: #2C2C2E;
@@ -275,6 +177,41 @@ Keep your tension **loose**. Because you are inserting the hook into the "V" of 
   --copper-gleam: #B86F50;
   --violet-sheen: #7A5CA0;
   --sheen-gold: #C8A146;
+}
+</file>
+
+<file path="css/nest-filter.css">
+/* css/nest-filter.css */
+.nest-filter-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0 40px 0;
+    flex-wrap: wrap;
+}
+
+.nest-filter-btn {
+    background: var(--feather-white);
+    border: 1px solid var(--downy-grey);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--coal-dust);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nest-filter-btn:hover {
+    border-color: var(--tail-green);
+    color: var(--tail-green);
+}
+
+.nest-filter-btn.active {
+    background: var(--tail-green);
+    color: white;
+    border-color: var(--tail-green);
+    box-shadow: 0 4px 10px rgba(18, 94, 78, 0.2);
 }
 </file>
 
@@ -379,134 +316,54 @@ Keep your tension **loose**. Because you are inserting the hook into the "V" of 
 ]
 </file>
 
-<file path="js/loadBlogList.js">
-document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById('blog-list-container');
-    
-    // Path check for subpages
-    const isSubpage = window.location.pathname.includes('/pages/');
-    const dataPath = isSubpage ? '../data/articles.json' : 'data/articles.json';
+<file path="js/pillarFilter.js">
+/* js/pillarFilter.js */
 
-    fetch(dataPath)
-        .then(response => response.json())
-        .then(articles => {
-            if (articles.length === 0) {
-                container.innerHTML = "<p>New articles coming soon!</p>";
-                return;
-            }
+/**
+ * Initializes the Pillar filtering logic.
+ * @param {string} containerId - The ID of the grid/list container (e.g., 'gallery-container')
+ * @param {string} cardClass - The class name of the individual cards (e.g., 'tool-card')
+ */
 
-            articles.forEach(article => {
-                const card = document.createElement('a');
-                card.className = 'blog-card';
-                // This link targets our new reader page with the specific ID
-                card.href = `blog-post.html?id=${article.id}`;
-                card.target = "_blank"; // Opens in new tab
+async function initPillarFilters(containerId, cardClass) {
+    const filterPlaceholder = document.getElementById('pillar-filter-placeholder');
+    if (!filterPlaceholder) return;
 
-                card.innerHTML = `
-                    <img src="${article.image}" alt="${article.title}" class="blog-card-image">
-                    <div class="blog-card-content">
-                        <span class="blog-pillar-tag">${article.pillar}</span>
-                        <h3>${article.title}</h3>
-                        <p>${article.summary}</p>
-                    </div>
-                `;
-                container.appendChild(card);
+    try {
+        const res = await fetch('../components/nest-filter-bar.html');
+        if (!res.ok) throw new Error("Filter component not found");
+        const html = await res.text();
+        filterPlaceholder.innerHTML = html;
+
+        const buttons = document.querySelectorAll('.nest-filter-btn');
+        const cards = document.getElementsByClassName(cardClass);
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedPillar = btn.getAttribute('data-pillar').toLowerCase();
+
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                Array.from(cards).forEach(card => {
+                    const tag = card.querySelector('.nest-tag, .blog-pillar-tag');
+                    // Get text, lowercase it, and remove "The " for easier matching
+                    const nestText = tag ? tag.textContent.trim().toLowerCase().replace('the ', '') : "";
+                    const compareValue = selectedPillar.replace('the ', '');
+
+                    if (selectedPillar === 'all' || nestText.includes(compareValue) || compareValue.includes(nestText)) {
+                        card.style.display = ''; 
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                    }
+                });
             });
-        })
-        .catch(err => {
-            console.error("Error loading blog list:", err);
-            container.innerHTML = "<p>Unable to load articles at this time.</p>";
         });
-});
-</file>
-
-<file path="js/loadBlogPost.js">
-document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const postId = params.get('id');
-
-    if (!postId) {
-        document.getElementById('article-title').textContent = "No Article ID provided in URL.";
-        return;
+    } catch (err) {
+        console.error("Pillar Filter Error:", err);
     }
-
-    let attempts = 0;
-    function checkLibrary() {
-        if (typeof marked !== 'undefined') {
-            console.log("Marked.js found!");
-            fetchArticleData(postId);
-        } else if (attempts < 50) { // Try for 5 seconds total
-            attempts++;
-            setTimeout(checkLibrary, 100);
-        } else {
-            document.getElementById('article-title').textContent = "Error: Markdown library failed to load.";
-        }
-    }
-
-    checkLibrary();
-});
-
-function fetchArticleData(postId) {
-    // Correctly locate articles.json from /pages/blog-post.html
-    const dataPath = '../data/articles.json'; 
-
-    fetch(dataPath)
-        .then(res => {
-            if (!res.ok) throw new Error("Could not load articles.json");
-            return res.json();
-        })
-        .then(articles => {
-            const article = articles.find(a => a.id === postId);
-            if (article) {
-                renderPost(article);
-            } else {
-                document.getElementById('article-title').textContent = "Article ID not found.";
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            document.getElementById('article-title').textContent = "Error loading metadata.";
-        });
-}
-
-function renderPost(article) {
-    document.getElementById('article-title').textContent = article.title;
-
-    fetch(article.file)
-        .then(res => {
-            if (!res.ok) throw new Error("Could not find Markdown file at: " + article.file);
-            return res.text();
-        })
-        .then(text => {
-            // Render the markdown
-            document.getElementById('article-body').innerHTML = marked.parse(text);
-            // Run the CTA logic
-            injectCTA(article.pillar);
-        })
-        .catch(err => {
-            document.getElementById('article-body').innerHTML = `<p style="color:red">${err.message}</p>`;
-        });
-}
-
-function injectCTA(pillar) {
-    const container = document.getElementById('dynamic-cta-container');
-    
-    const ctas = {
-        "The Collector's Vault": { text: "Shop the Collection", link: "gallery.html", class: "vault" },
-        "The Maker's Studio": { text: "Get the Pattern", link: "tools.html", class: "studio" },
-        "The Strategist's Loom": { text: "Download the Blueprint", link: "contact-form.html", class: "loom" }
-    };
-
-    // Fallback if pillar name doesn't match perfectly
-    const choice = ctas[pillar] || { text: "Back to Blog", link: "blog.html", class: "" };
-    
-    // REPLACE your old container.innerHTML with this:
-    container.innerHTML = `
-        <div class="pillar-cta ${choice.class}">
-            <h3>Inspired by ${pillar}?</h3>
-            <a href="${choice.link}" class="bmc-button">${choice.text}</a>
-        </div>
-    `;
 }
 </file>
 
@@ -635,32 +492,6 @@ If you want to add a caption under an image, use an italicized line directly bel
     </main>
     <script src="../js/loadHeader.js"></script>
     <script src="../js/loadBlogPost.js"></script>
-</body>
-</html>
-</file>
-
-<file path="pages/blog.html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Blog | TheYarnMagpie</title>
-    <script src="../js/loadHead.js"></script>
-    <link rel="stylesheet" href="../css/blog.css">
-</head>
-<body>
-    <div id="header-placeholder"></div>
-
-    <main>
-      <section class="blog-intro">
-          <h2>The Loom: Articles & Insights</h2>
-          <p>Exploring the intersections of crochet, creativity, and business strategy.</p>
-      </section>
-
-      <div id="blog-list-container"></div>
-    </main>
-
-    <script src="../js/loadHeader.js"></script>
-    <script src="../js/loadBlogList.js"></script>
 </body>
 </html>
 </file>
@@ -823,6 +654,144 @@ fi
 
 </file>
 
+<file path="css/blog.css">
+/* --- BLOG LIST VIEW --- */
+#blog-list-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+}
+
+.blog-card {
+  display: flex;
+  background: #f9f9f9 !important;
+  /* Force light background */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  height: 200px;
+}
+
+/* FORCE TEXT COLORS TO BE VISIBLE */
+.blog-card-content h3 {
+  color: #222 !important;
+  /* Dark charcoal */
+  margin: 0 0 10px 0;
+}
+
+.blog-card-content p {
+  color: #444 !important;
+  /* Dark grey */
+  font-size: 0.95rem;
+}
+
+.blog-pillar-tag {
+  display: inline-block;
+  background-color: var(--tail-green) !important;
+  /* Brand alignment */
+  color: white !important;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+
+.blog-card-image {
+  width: 30%;
+  object-fit: cover;
+  background: #eee;
+}
+
+/* --- BLOG POST / ARTICLE VIEW --- */
+.blog-article-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  color: #333 !important;
+  /* Force dark text for article body */
+}
+
+#article-body {
+  line-height: 1.8;
+}
+
+/* Fix for Markdown headers if they are appearing white */
+#article-body h1, #article-body h2, #article-body h3 {
+  color: #222 !important;
+}
+
+/* --- THE PILLAR CTA BOX --- */
+.pillar-cta {
+  margin-top: 50px;
+  padding: 30px;
+  background: #ffffff !important;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Specific Top Borders */
+.pillar-cta.vault {
+  border-top: 6px solid #4a4e69 !important;
+}
+.pillar-cta.studio {
+  border-top: 6px solid #d4a373 !important;
+}
+.pillar-cta.loom {
+  border-top: 6px solid #84a59d !important;
+}
+
+.pillar-cta h3 {
+  color: #222 !important;
+}
+
+/* THE PEACH BUTTON */
+.pillar-cta .bmc-button {
+  display: inline-block;
+  background-color: #d4a373 !important;
+  /* Peach */
+  color: #ffffff !important;
+  /* White text on peach button */
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Mobile Fix */
+@media (max-width: 600px) {
+  .blog-card {
+    flex-direction: column;
+    height: auto;
+  }
+  .blog-card-image {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+/* Ensures images inside blog posts don't overflow and look consistent */
+#article-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  /* Centers the image with spacing */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+</file>
+
 <file path="css/contact-form.css">
 /* styles for contact form */
 
@@ -871,6 +840,159 @@ fi
 
 #contact-form button:hover {
   background-color: #218838;
+}
+</file>
+
+<file path="js/loadBlogList.js">
+/* js/loadBlogList.js */
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById('blog-list-container');
+    if (!container) return;
+
+    const isSubpage = window.location.pathname.includes('/pages/');
+    const dataPath = isSubpage ? '../data/articles.json' : 'data/articles.json';
+
+    fetch(dataPath)
+        .then(response => response.json())
+        .then(articles => {
+            if (articles.length === 0) {
+                container.innerHTML = "<p>New articles coming soon!</p>";
+                return;
+            }
+
+            container.innerHTML = ''; // Clear container
+
+            articles.forEach(article => {
+                const card = document.createElement('a');
+                card.className = 'blog-card';
+                card.href = `blog-post.html?id=${article.id}`;
+                card.target = "_blank"; 
+
+                // We use the 'pillar' field for the Nest Tag
+                const nestLabel = article.pillar || "The Maker's Studio";
+
+                card.innerHTML = `
+                    <img src="${article.image}" alt="${article.title}" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-pillar-tag">${nestLabel}</span>
+                        <h3>${article.title}</h3>
+                        <p>${article.summary}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            
+            // --- PILLAR FILTER INTEGRATION START ---
+            // This runs after all 'blog-card' elements are appended to the DOM
+            if (typeof initPillarFilters === 'function') {
+                initPillarFilters('blog-list-container', 'blog-card');
+            }
+            // --- PILLAR FILTER INTEGRATION END ---
+            
+        })
+        .catch(err => {
+            console.error("Error loading blog list:", err);
+            container.innerHTML = "<p>Unable to load articles at this time.</p>";
+        });
+});
+</file>
+
+<file path="js/loadBlogPost.js">
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('id');
+
+    if (!postId) {
+        document.getElementById('article-title').textContent = "No Article ID provided in URL.";
+        return;
+    }
+
+    let attempts = 0;
+    function checkLibrary() {
+        if (typeof marked !== 'undefined') {
+            console.log("Marked.js found!");
+            fetchArticleData(postId);
+        } else if (attempts < 50) { // Try for 5 seconds total
+            attempts++;
+            setTimeout(checkLibrary, 100);
+        } else {
+            document.getElementById('article-title').textContent = "Error: Markdown library failed to load.";
+        }
+    }
+
+    checkLibrary();
+});
+
+function fetchArticleData(postId) {
+    // Correctly locate articles.json from /pages/blog-post.html
+    const dataPath = '../data/articles.json'; 
+
+    fetch(dataPath)
+        .then(res => {
+            if (!res.ok) throw new Error("Could not load articles.json");
+            return res.json();
+        })
+        .then(articles => {
+            const article = articles.find(a => a.id === postId);
+            if (article) {
+                renderPost(article);
+            } else {
+                document.getElementById('article-title').textContent = "Article ID not found.";
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById('article-title').textContent = "Error loading metadata.";
+        });
+}
+
+function renderPost(article) {
+    const titleEl = document.getElementById('article-title');
+    
+    // Create and inject the Nest Tag before the title
+    const nestLabel = article.pillar || "The Maker's Studio";
+    const pillarTag = document.createElement('span');
+    pillarTag.className = 'blog-pillar-tag';
+    pillarTag.style.display = 'block'; // Ensure it sits above the title
+    pillarTag.style.marginBottom = '10px';
+    pillarTag.textContent = nestLabel;
+    
+    titleEl.parentNode.insertBefore(pillarTag, titleEl);
+    titleEl.textContent = article.title;
+
+    fetch(article.file)
+        .then(res => {
+            if (!res.ok) throw new Error("Could not find Markdown file");
+            return res.text();
+        })
+        .then(text => {
+            document.getElementById('article-body').innerHTML = marked.parse(text);
+            injectCTA(article.pillar);
+        })
+        .catch(err => {
+            document.getElementById('article-body').innerHTML = `<p style="color:red">${err.message}</p>`;
+        });
+}
+
+function injectCTA(pillar) {
+    const container = document.getElementById('dynamic-cta-container');
+    
+    const ctas = {
+        "The Collector's Vault": { text: "Shop the Collection", link: "gallery.html", class: "vault" },
+        "The Maker's Studio": { text: "Get the Pattern", link: "tools.html", class: "studio" },
+        "The Strategist's Loom": { text: "Download the Blueprint", link: "contact-form.html", class: "loom" }
+    };
+
+    // Fallback if pillar name doesn't match perfectly
+    const choice = ctas[pillar] || { text: "Back to Blog", link: "blog.html", class: "" };
+    
+    // REPLACE your old container.innerHTML with this:
+    container.innerHTML = `
+        <div class="pillar-cta ${choice.class}">
+            <h3>Inspired by ${pillar}?</h3>
+            <a href="${choice.link}" class="bmc-button">${choice.text}</a>
+        </div>
+    `;
 }
 </file>
 
@@ -1020,6 +1142,36 @@ Review each checklist item after relevant file changes. This will help maintain 
 
 - [ ] Overlay Accessibility
 The overlay does not currently trap focus or respond to "Esc" key to close. Consider adding accessibility improvements in the future.
+</file>
+
+<file path="pages/blog.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blog | TheYarnMagpie</title>
+    <script src="../js/loadHead.js"></script>
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+      
+      <div id="pillar-filter-placeholder"></div>
+      
+      <section class="blog-intro">
+          <h2>The Loom: Articles & Insights</h2>
+          <p>Exploring the intersections of crochet, creativity, and business strategy.</p>
+      </section>
+
+      <div id="blog-list-container"></div>
+    </main>
+
+    <script src="../js/loadHeader.js"></script>
+    <script src="../js/pillarFilter.js"></script>
+    <script src="../js/loadBlogList.js"></script>
+</body>
+</html>
 </file>
 
 <file path="pages/about.html">
@@ -1253,28 +1405,37 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tools | TheYarnMagpie</title>
-    <script src="../js/loadHead.js"></script>
-    <link rel="stylesheet" href="../css/tools.css">
-    <link rel="stylesheet" href="../css/tool-detail-card.css">
+  <meta charset="UTF-8">
+  <title>Tools | TheYarnMagpie</title>
+  <script src="../js/loadHead.js"></script>
+  <link rel="stylesheet" href="../css/tools.css">
+  <link rel="stylesheet" href="../css/nest-filter.css">
+  <link rel="stylesheet" href="../css/tool-detail-card.css">
 </head>
 <body>
-    <div id="header-placeholder"></div>
+  <div id="header-placeholder"></div>
 
-    <main class="wrapper">
-        <header class="section-header">
-            <h2>The Workshop</h2>
-            <p>Practical tools for the modern crocheter.</p>
-        </header>
+  <main class="wrapper">
+    
+    <div id="pillar-filter-placeholder"></div>
+    
+    <header class="section-header">
+      <h2>The Workshop</h2>
+      <p>
+        Practical tools for the modern crocheter.
+      </p>
+    </header>
 
-        <div id="tools-container" class="tools-grid">
-            <p>Loading tools...</p>
-        </div>
-    </main>
+    <div id="tools-container" class="tools-grid">
+      <p>
+        Loading tools...
+      </p>
+    </div>
+  </main>
 
-    <script src="../js/loadHeader.js"></script>
-    <script src="../js/loadTools.js"></script>
+  <script src="../js/loadHeader.js"></script>
+  <script src="../js/pillarFilter.js"></script>
+  <script src="../js/loadTools.js"></script>
 </body>
 </html>
 </file>
@@ -1296,6 +1457,81 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
         </div>
     </div>
 </div>
+</file>
+
+<file path="js/loadHeader.js">
+document.addEventListener("DOMContentLoaded", function () {
+  const headerPlaceholder = document.getElementById('header-placeholder');
+  if (!headerPlaceholder) return;
+
+  // Determine the correct path to header.html based on the current page's location
+  const path = window.location.pathname.includes('/pages/') ? '../components/header.html' : 'components/header.html';
+
+const basePath = window.location.pathname.includes('/TheYarnMagpie/') 
+  ? '/TheYarnMagpie/' 
+  : '/';
+
+const head = document.head;
+
+['css/styles.css', 'css/gallery-styles.css', 'css/about.css', 'css/tools.css', 'css/contact-form.css', 'css/header.css'].forEach(file => {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = basePath + file;
+  head.appendChild(link);
+});
+
+// Optional: add the font link too
+const font = document.createElement('link');
+font.rel = 'stylesheet';
+font.href = 'https://fonts.googleapis.com/css2?family=Gwendolyn&display=swap';
+head.appendChild(font);
+
+  fetch(path)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      headerPlaceholder.innerHTML = data;
+
+      // Adjust all data-href links to work with current base path
+      const basePath = window.location.pathname.includes('/TheYarnMagpie/') ? '/TheYarnMagpie/' : '/';
+      document.querySelectorAll('a[data-href]').forEach(link => {
+        const dataHref = link.getAttribute('data-href') || '';
+
+        // Basic hardening: ignore empty values and disallow dangerous URL schemes
+        const trimmed = dataHref.trim();
+        if (!trimmed) {
+          return;
+        }
+        const lower = trimmed.toLowerCase();
+        if (lower.startsWith('javascript:') || lower.startsWith('data:') || lower.startsWith('vbscript:')) {
+          return;
+        }
+
+        // Build a safe URL relative to the current origin and basePath
+        let safePath = trimmed;
+        if (safePath.startsWith('/')) {
+          safePath = safePath.substring(1);
+        }
+
+        try {
+          const url = new URL(basePath + safePath, window.location.origin);
+          // Ensure we stay on the same origin
+          if (url.origin === window.location.origin) {
+            link.href = url.toString();
+          }
+        } catch (e) {
+          // If constructing the URL fails, leave the link unchanged
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error loading header:', error);
+    });
+});
 </file>
 
 <file path="css/gallery-details-card.css">
@@ -1407,81 +1643,6 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
 }
 </file>
 
-<file path="js/loadHeader.js">
-document.addEventListener("DOMContentLoaded", function () {
-  const headerPlaceholder = document.getElementById('header-placeholder');
-  if (!headerPlaceholder) return;
-
-  // Determine the correct path to header.html based on the current page's location
-  const path = window.location.pathname.includes('/pages/') ? '../components/header.html' : 'components/header.html';
-
-const basePath = window.location.pathname.includes('/TheYarnMagpie/') 
-  ? '/TheYarnMagpie/' 
-  : '/';
-
-const head = document.head;
-
-['css/styles.css', 'css/gallery-styles.css', 'css/about.css', 'css/tools.css', 'css/contact-form.css', 'css/header.css'].forEach(file => {
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = basePath + file;
-  head.appendChild(link);
-});
-
-// Optional: add the font link too
-const font = document.createElement('link');
-font.rel = 'stylesheet';
-font.href = 'https://fonts.googleapis.com/css2?family=Gwendolyn&display=swap';
-head.appendChild(font);
-
-  fetch(path)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then(data => {
-      headerPlaceholder.innerHTML = data;
-
-      // Adjust all data-href links to work with current base path
-      const basePath = window.location.pathname.includes('/TheYarnMagpie/') ? '/TheYarnMagpie/' : '/';
-      document.querySelectorAll('a[data-href]').forEach(link => {
-        const dataHref = link.getAttribute('data-href') || '';
-
-        // Basic hardening: ignore empty values and disallow dangerous URL schemes
-        const trimmed = dataHref.trim();
-        if (!trimmed) {
-          return;
-        }
-        const lower = trimmed.toLowerCase();
-        if (lower.startsWith('javascript:') || lower.startsWith('data:') || lower.startsWith('vbscript:')) {
-          return;
-        }
-
-        // Build a safe URL relative to the current origin and basePath
-        let safePath = trimmed;
-        if (safePath.startsWith('/')) {
-          safePath = safePath.substring(1);
-        }
-
-        try {
-          const url = new URL(basePath + safePath, window.location.origin);
-          // Ensure we stay on the same origin
-          if (url.origin === window.location.origin) {
-            link.href = url.toString();
-          }
-        } catch (e) {
-          // If constructing the URL fails, leave the link unchanged
-        }
-      });
-    })
-    .catch(error => {
-      console.error('Error loading header:', error);
-    });
-});
-</file>
-
 <file path="data/gallery.json">
 [
   {
@@ -1518,30 +1679,6 @@ head.appendChild(font);
     ]
   }
 ]
-</file>
-
-<file path="components/header.html">
-<header>
-  <div class="header-container">
-    <div class="brand">
-      <img src="/TheYarnMagpie/images/magpie-yarn.png" alt="magpie with a yarn ball" class="magpie-yarn">
-        <h1>TheYarnMagpie</h1>
-      </div>
-      <p class="tagline">creative crochet designs & handmade magic</p>
-   
-    <!-- Navigation Bar -->
-    <nav>      
-        <ul>
-            <li><a data-href="index.html">Home</a></li>
-            <li><a data-href="pages/about.html">About</a></li>
-            <li><a data-href="pages/gallery.html">Gallery</a></li>
-            <li><a data-href="pages/blog.html">Blog</a></li>
-            <li><a data-href="pages/tools.html">Tools</a></li>
-            <li><a data-href="pages/contact-form.html">Contact</a></li>
-        </ul>
-    </nav>
-  </div>
-</header>
 </file>
 
 <file path="index.html">
@@ -1626,6 +1763,30 @@ head.appendChild(font);
 
 </body>
 </html>
+</file>
+
+<file path="components/header.html">
+<header>
+  <div class="header-container">
+    <div class="brand">
+      <img src="/TheYarnMagpie/images/magpie-yarn.png" alt="magpie with a yarn ball" class="magpie-yarn">
+        <h1>TheYarnMagpie</h1>
+      </div>
+      <p class="tagline">creative crochet designs & handmade magic</p>
+   
+    <!-- Navigation Bar -->
+    <nav>      
+        <ul>
+            <li><a data-href="index.html">Home</a></li>
+            <li><a data-href="pages/about.html">About</a></li>
+            <li><a data-href="pages/gallery.html">Gallery</a></li>
+            <li><a data-href="pages/blog.html">Blog</a></li>
+            <li><a data-href="pages/tools.html">Tools</a></li>
+            <li><a data-href="pages/contact-form.html">Contact</a></li>
+        </ul>
+    </nav>
+  </div>
+</header>
 </file>
 
 <file path="css/styles.css">
@@ -2021,34 +2182,42 @@ async function loadGallery() {
   try {
     const response = await fetch('../data/gallery.json');
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    
+
     const galleryData = await response.json();
-    container.innerHTML = ''; 
+    container.innerHTML = '';
 
     galleryData.forEach(item => {
       const cardWrapper = document.createElement('div');
       cardWrapper.className = 'gallery-card-wrapper';
-      
+
       const nestLabel = item.pillar || "Collector's Vault";
 
       cardWrapper.innerHTML = `
-        <div class="gallery-item">
-          <span class="nest-tag">${nestLabel}</span>
-          <img src="${item.image}" alt="${item.title}" onerror="this.src='../assets/placeholder.jpg'">
-          <div class="gallery-info">
-            <h3>${item.title}</h3>
-          </div>
-        </div>
+      <div class="gallery-item">
+      <span class="nest-tag">${nestLabel}</span>
+      <img src="${item.image}" alt="${item.title}" onerror="this.src='../assets/placeholder.jpg'">
+      <div class="gallery-info">
+      <h3>${item.title}</h3>
+      </div>
+      </div>
       `;
-      
+
       const itemElement = cardWrapper.querySelector('.gallery-item');
       itemElement.addEventListener('click', (e) => {
         e.preventDefault();
-        openGalleryDetail(item); 
+        openGalleryDetail(item);
       });
 
       container.appendChild(cardWrapper);
     });
+
+    // --- PILLAR FILTER INTEGRATION START ---
+    // We call this ONLY after the loop above is finished
+    if (typeof initPillarFilters === 'function') {
+      await initPillarFilters('gallery-container', 'gallery-card-wrapper');
+    }
+    // --- PILLAR FILTER INTEGRATION END ---
+
   } catch (error) {
     console.error('Gallery Load Error:', error);
     container.innerHTML = `<p style="text-align:center; padding: 20px; color: var(--burnished-copper);">The Magpie encountered an error in the Gallery data.</p>`;
@@ -2060,7 +2229,7 @@ async function openGalleryDetail(item) {
   try {
     const templateRes = await fetch('../components/gallery-detail-card.html');
     const template = await templateRes.text();
-    
+
     // 1. Clean up existing overlay to prevent ID conflicts
     const existing = document.getElementById('galleryDetailOverlay');
     if (existing) existing.remove();
@@ -2068,17 +2237,17 @@ async function openGalleryDetail(item) {
     // 2. THE FIX: Inject into Body, not the container
     // This ensures it stays on top and ignores the parent's layout
     document.body.insertAdjacentHTML('beforeend', template);
-    
+
     const overlay = document.getElementById('galleryDetailOverlay');
-    
+
     // 3. Populate Data
     document.getElementById('galleryDetailTitle').textContent = item.title;
     document.getElementById('galleryDetailImage').src = item.image;
     document.getElementById('galleryDetailDescription').textContent = item.description;
-    
+
     const pillarEl = document.getElementById('galleryDetailPillar');
     if (pillarEl) {
-        pillarEl.textContent = item.pillar || "Collector's Vault";
+      pillarEl.textContent = item.pillar || "Collector's Vault";
     }
 
     const tagsUl = document.getElementById('galleryDetailTags');
@@ -2123,6 +2292,7 @@ loadGallery();
     <title>Crochet Gallery  TheYarnMagpie</title>
     <link rel="stylesheet" href="../css/gallery.css">
 <link rel="stylesheet" href="../css/gallery-detail-card.css">
+<link rel="stylesheet" href="../css/nest-filter.css">
 
     <script src="../js/loadHead.js"></script>
 
@@ -2132,6 +2302,9 @@ loadGallery();
     <div id="header-placeholder"></div>
 
     <main>
+      
+      <div id="pillar-filter-placeholder"></div>
+      
       <section>
         <div>
           <h2>TheYarnMagpie Crochet Gallery</h2>
@@ -2144,6 +2317,7 @@ loadGallery();
     </main>
 
     <script src="../js/loadHeader.js"></script>
+    <script src="../js/pillarFilter.js"></script>
     <script src="../js/loadGallery.js"></script>
 
 </body>

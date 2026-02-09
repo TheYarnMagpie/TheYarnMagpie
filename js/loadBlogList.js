@@ -35,6 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
                 container.appendChild(card);
             });
+            
+            // --- PILLAR FILTER INTEGRATION START ---
+            // This runs after all 'blog-card' elements are appended to the DOM
+            if (typeof initPillarFilters === 'function') {
+                initPillarFilters('blog-list-container', 'blog-card');
+            }
+            // --- PILLAR FILTER INTEGRATION END ---
+            
         })
         .catch(err => {
             console.error("Error loading blog list:", err);

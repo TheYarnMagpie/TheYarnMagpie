@@ -29,6 +29,13 @@ async function loadTools() {
       });
       container.appendChild(card);
     });
+
+    // Initialize f
+    if (typeof initPillarFilters === 'function') {
+      initPillarFilters('tools-container', 'tool-card');
+    }
+
+
   } catch (error) {
     console.error('Tools Load Error:', error);
   }

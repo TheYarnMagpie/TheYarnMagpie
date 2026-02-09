@@ -1,11 +1,9 @@
-[
-  {
-    "id": "waistcoat-stitch",
-    "title": "Mastering the Waistcoat Stitch",
-    "summary": "Learn how to create a beautiful knit-look texture with your crochet hook.",
-    "pillar": "The Maker's Studio",
-    "date": "2026-02-07",
-    "image": "../images/gallery-project-basket.jpg",
-    "file": "../articles/waistcoat-stitch.md"
-  }
-]
+[{
+  "id": "waistcoat-stitch",
+  "title": "Mastering the Waistcoat Stitch",
+  "summary": "Learn how to create a beautiful knit-look texture with your crochet hook.",
+  "pillar": "Maker's Studio",
+  "date": "2026-02-07",
+  "image": "../images/gallery-project-basket.jpg",
+  "file": "../articles/waistcoat-stitch.md"
+}]
