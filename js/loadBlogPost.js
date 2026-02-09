@@ -47,17 +47,26 @@ function fetchArticleData(postId) {
 }
 
 function renderPost(article) {
-    document.getElementById('article-title').textContent = article.title;
+    const titleEl = document.getElementById('article-title');
+    
+    // Create and inject the Nest Tag before the title
+    const nestLabel = article.pillar || "The Maker's Studio";
+    const pillarTag = document.createElement('span');
+    pillarTag.className = 'blog-pillar-tag';
+    pillarTag.style.display = 'block'; // Ensure it sits above the title
+    pillarTag.style.marginBottom = '10px';
+    pillarTag.textContent = nestLabel;
+    
+    titleEl.parentNode.insertBefore(pillarTag, titleEl);
+    titleEl.textContent = article.title;
 
     fetch(article.file)
         .then(res => {
-            if (!res.ok) throw new Error("Could not find Markdown file at: " + article.file);
+            if (!res.ok) throw new Error("Could not find Markdown file");
             return res.text();
         })
         .then(text => {
-            // Render the markdown
             document.getElementById('article-body').innerHTML = marked.parse(text);
-            // Run the CTA logic
             injectCTA(article.pillar);
         })
         .catch(err => {

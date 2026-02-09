@@ -1,7 +1,8 @@
+/* js/loadBlogList.js */
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById('blog-list-container');
-    
-    // Path check for subpages
+    if (!container) return;
+
     const isSubpage = window.location.pathname.includes('/pages/');
     const dataPath = isSubpage ? '../data/articles.json' : 'data/articles.json';
 
@@ -13,17 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            container.innerHTML = ''; // Clear container
+
             articles.forEach(article => {
                 const card = document.createElement('a');
                 card.className = 'blog-card';
-                // This link targets our new reader page with the specific ID
                 card.href = `blog-post.html?id=${article.id}`;
-                card.target = "_blank"; // Opens in new tab
+                card.target = "_blank"; 
+
+                // We use the 'pillar' field for the Nest Tag
+                const nestLabel = article.pillar || "The Maker's Studio";
 
                 card.innerHTML = `
                     <img src="${article.image}" alt="${article.title}" class="blog-card-image">
                     <div class="blog-card-content">
-                        <span class="blog-pillar-tag">${article.pillar}</span>
+                        <span class="blog-pillar-tag">${nestLabel}</span>
                         <h3>${article.title}</h3>
                         <p>${article.summary}</p>
                     </div>
