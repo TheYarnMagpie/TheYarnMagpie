@@ -1,88 +1,102 @@
-const galleryContainer = document.getElementById('gallery-container');
-const detailCardPath = '../components/gallery-detail-card.html';
+/* js/loadGallery.js */
+// 1. Data Fetching and Card Rendering Logic
 
 async function loadGallery() {
+  const container = document.getElementById('gallery-container');
+  if (!container) return;
+
   try {
-    const [galleryResponse, detailCardResponse] = await Promise.all([
-      fetch('../data/gallery.json'), // Corrected: fetching gallery data
-      fetch(detailCardPath)
-    ]);
+    const response = await fetch('../data/gallery.json');
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const galleryData = await response.json();
+    container.innerHTML = ''; 
 
-    if (!galleryResponse.ok) throw new Error('Failed to load gallery data');
+    galleryData.forEach(item => {
+      const cardWrapper = document.createElement('div');
+      cardWrapper.className = 'gallery-card-wrapper';
+      
+      const nestLabel = item.pillar || "Collector's Vault";
 
-    const galleryData = await galleryResponse.json();
-    const detailCardText = await detailCardResponse.text();
+      cardWrapper.innerHTML = `
+        <div class="gallery-item">
+          <span class="nest-tag">${nestLabel}</span>
+          <img src="${item.image}" alt="${item.title}" onerror="this.src='../assets/placeholder.jpg'">
+          <div class="gallery-info">
+            <h3>${item.title}</h3>
+          </div>
+        </div>
+      `;
+      
+      const itemElement = cardWrapper.querySelector('.gallery-item');
+      itemElement.addEventListener('click', (e) => {
+        e.preventDefault();
+        openGalleryDetail(item); 
+      });
 
-    if (!document.getElementById('galleryDetailOverlay')) {
-        document.body.insertAdjacentHTML('beforeend', detailCardText);
+      container.appendChild(cardWrapper);
+    });
+  } catch (error) {
+    console.error('Gallery Load Error:', error);
+    container.innerHTML = `<p style="text-align:center; padding: 20px; color: var(--burnished-copper);">The Magpie encountered an error in the Gallery data.</p>`;
+  }
+}
+
+// 2. Detail Modal Logic (Gallery Fix Architecture)
+async function openGalleryDetail(item) {
+  try {
+    const templateRes = await fetch('../components/gallery-detail-card.html');
+    const template = await templateRes.text();
+    
+    // 1. Clean up existing overlay to prevent ID conflicts
+    const existing = document.getElementById('galleryDetailOverlay');
+    if (existing) existing.remove();
+
+    // 2. THE FIX: Inject into Body, not the container
+    // This ensures it stays on top and ignores the parent's layout
+    document.body.insertAdjacentHTML('beforeend', template);
+    
+    const overlay = document.getElementById('galleryDetailOverlay');
+    
+    // 3. Populate Data
+    document.getElementById('galleryDetailTitle').textContent = item.title;
+    document.getElementById('galleryDetailImage').src = item.image;
+    document.getElementById('galleryDetailDescription').textContent = item.description;
+    
+    const pillarEl = document.getElementById('galleryDetailPillar');
+    if (pillarEl) {
+        pillarEl.textContent = item.pillar || "Collector's Vault";
     }
 
-    renderGalleryCards(galleryData);
+    const tagsUl = document.getElementById('galleryDetailTags');
+    if (tagsUl && item.tags && Array.isArray(item.tags)) {
+      tagsUl.innerHTML = '';
+      item.tags.forEach(tag => {
+        const li = document.createElement('li');
+        li.textContent = tag;
+        tagsUl.appendChild(li);
+      });
+    }
+
+    // 4. Show the overlay
+    setTimeout(() => overlay.classList.add('active'), 10);
+
   } catch (error) {
-    console.error('Error loading gallery:', error);
+    console.error('Error opening gallery detail:', error);
   }
 }
 
 
-function renderGalleryCards(items) {
-  if (!galleryContainer) return;
-  galleryContainer.innerHTML = '';
-  
-  items.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'gallery-card';
-    card.innerHTML = `
-      <img src="${item.image}" alt="${item.title}">
-      <div class="gallery-card-info">
-        <h3>${item.title}</h3>
-        <button class="view-details-btn">See Details</button>
-      </div>
-    `;
-    
-    // Using addEventListener is safer than onclick for complex data
-    card.querySelector('.view-details-btn').addEventListener('click', () => openGalleryDetail(item));
-    galleryContainer.appendChild(card);
-  });
-}
-
-function openGalleryDetail(item) {
+// 3. Global Closing Logic
+document.addEventListener('click', function(e) {
   const overlay = document.getElementById('galleryDetailOverlay');
   if (!overlay) return;
 
-  // 1. Set Image and Title
-  document.getElementById('galleryDetailImage').src = item.image;
-  document.getElementById('galleryDetailTitle').textContent = item.title;
-  
-  // 2. Restore Gallery-specific description (using 'description' instead of 'summary')
-  document.getElementById('galleryDetailDescription').textContent = item.description || item.summary || "";
-
-  // 3. Restore Tags (The horizontal list of features/materials)
-  const tagsUl = document.getElementById('galleryDetailTags');
-  if (tagsUl) {
-      tagsUl.innerHTML = '';
-      if (item.tags && Array.isArray(item.tags)) {
-        item.tags.forEach(tag => {
-          const li = document.createElement('li');
-          li.textContent = tag;
-          tagsUl.appendChild(li);
-        });
-      }
-  }
-  
-  overlay.classList.add('active');
-}
-
-
-// 4. Closing Logic (Handles X button and clicking the dark background)
-document.addEventListener('click', function(e) {
-  const overlay = document.getElementById('galleryDetailOverlay');
-  if (!overlay || !overlay.classList.contains('active')) return;
-
-  const detailCard = overlay.querySelector('.gallery-detail-card');
-  const isCloseBtn = e.target.id === 'closeGalleryDetailBtn' || e.target.classList.contains('close-detail');
+  const isCloseBtn = e.target.id === 'closeGalleryDetailBtn' || e.target.closest('.close-detail');
 
   if (isCloseBtn || e.target === overlay) {
     overlay.classList.remove('active');
+    setTimeout(() => overlay.remove(), 300);
   }
 });
 
