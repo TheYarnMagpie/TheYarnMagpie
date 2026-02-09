@@ -1,11 +1,14 @@
-<div class="tools-detail-overlay" id="toolsDetailOverlay">
+<div id="toolsDetailOverlay" class="details-overlay">
     <div class="tools-detail-card">
-        <button class="close-detail" id="closeToolsDetailBtn" aria-label="Close tool details">&times;</button>
-        <img id="toolsDetailImage" src="" alt="Tools item image" class="tools-detail-image" />
-        <div class="detail-content">
+        <button id="closeToolsDetailBtn" class="close-detail">&times;</button>
+        <div class="tools-detail-header">
+            <span id="toolsDetailIcon" class="detail-icon"></span>
             <h2 id="toolsDetailTitle"></h2>
+        </div>
+        <div class="tools-detail-body">
+            <span id="toolsDetailCategory" class="detail-category"></span>
             <p id="toolsDetailDescription"></p>
-            <ul id="toolsDetailTags"></ul>
+            <div id="toolsDetailContent"></div>
         </div>
     </div>
 </div>

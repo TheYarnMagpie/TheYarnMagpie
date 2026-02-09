@@ -1,22 +1,10 @@
 [
-    {
-        "image": "../images/gallery-project-basket.jpg",
-        "title": "US / UK Stitches Conversion",
-        "description": "A useful stash basket worked in the round with bulky yarn held in two strands, using the waistcoat stitch",
-        "tags": ["home decor", "waistcoat stitch", "bulky"]
-    },
-    
-    {
-        "image": "../images/ejemplo2.jpg",
-        "title": "Gorro Vintage",
-        "description": "Gorro estilo vintage en tonos pastel, perfecto para cualquier ocasión.",
-        "tags": ["hats", "pastel", "vintage"]
-    },
-        
-    {
-        "image": "../images/ejemplo3.jpg",
-        "title": "Guantes sin Dedos",
-        "description": "Guantes cómodos y modernos, tejidos con hilo ecológico.",
-        "tags": ["guantes", "ecológico", "sin dedos"]
-    }
+  {
+    "id": "hook-size-calc",
+    "title": "Hook Size Calculator",
+    "category": "Essentials",
+    "description": "Convert hook sizes.",
+    "longDescription": "Detailed hook size conversion guide.",
+    "icon": "📏"
+  }
 ]

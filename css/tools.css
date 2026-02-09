@@ -1,38 +1,39 @@
-#tools-container {
+/* css/tools.css */
+
+.tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.tool-card {
+    background: var(--feather-white);
+    border: 1px solid var(--downy-grey);
+    border-radius: 15px;
     padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
 }
 
-.tools-card {
-    background-color: var(--downy-grey);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease;
+.tool-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--tail-green);
 }
 
-.tools-card:hover {
-    transform: translateY(-5px);
+.tool-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
 }
 
-.tools-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.tools-content {
-    padding: 1rem;
-}
-
-.tools-content h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-}
-
-.tools-content p {
-    font-size: 1rem;
-    color: #555;
+.btn-open-tool {
+    background: var(--tail-green);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
 }
