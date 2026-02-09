@@ -1,0 +1,32 @@
+/* css/nest-filter.css */
+.nest-filter-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0 40px 0;
+    flex-wrap: wrap;
+}
+
+.nest-filter-btn {
+    background: var(--feather-white);
+    border: 1px solid var(--downy-grey);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--coal-dust);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nest-filter-btn:hover {
+    border-color: var(--tail-green);
+    color: var(--tail-green);
+}
+
+.nest-filter-btn.active {
+    background: var(--tail-green);
+    color: white;
+    border-color: var(--tail-green);
+    box-shadow: 0 4px 10px rgba(18, 94, 78, 0.2);
+}
