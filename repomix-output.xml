@@ -302,20 +302,6 @@ Keep your tension **loose**. Because you are inserting the hook into the "V" of 
 }
 </file>
 
-<file path="data/articles.json">
-[
-  {
-    "id": "waistcoat-stitch",
-    "title": "Mastering the Waistcoat Stitch",
-    "summary": "Learn how to create a beautiful knit-look texture with your crochet hook.",
-    "pillar": "The Maker's Studio",
-    "date": "2026-02-07",
-    "image": "../images/gallery-project-basket.jpg",
-    "file": "../articles/waistcoat-stitch.md"
-  }
-]
-</file>
-
 <file path="js/pillarFilter.js">
 /* js/pillarFilter.js */
 
@@ -843,58 +829,16 @@ fi
 }
 </file>
 
-<file path="js/loadBlogList.js">
-/* js/loadBlogList.js */
-document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById('blog-list-container');
-    if (!container) return;
-
-    const isSubpage = window.location.pathname.includes('/pages/');
-    const dataPath = isSubpage ? '../data/articles.json' : 'data/articles.json';
-
-    fetch(dataPath)
-        .then(response => response.json())
-        .then(articles => {
-            if (articles.length === 0) {
-                container.innerHTML = "<p>New articles coming soon!</p>";
-                return;
-            }
-
-            container.innerHTML = ''; // Clear container
-
-            articles.forEach(article => {
-                const card = document.createElement('a');
-                card.className = 'blog-card';
-                card.href = `blog-post.html?id=${article.id}`;
-                card.target = "_blank"; 
-
-                // We use the 'pillar' field for the Nest Tag
-                const nestLabel = article.pillar || "The Maker's Studio";
-
-                card.innerHTML = `
-                    <img src="${article.image}" alt="${article.title}" class="blog-card-image">
-                    <div class="blog-card-content">
-                        <span class="blog-pillar-tag">${nestLabel}</span>
-                        <h3>${article.title}</h3>
-                        <p>${article.summary}</p>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-            
-            // --- PILLAR FILTER INTEGRATION START ---
-            // This runs after all 'blog-card' elements are appended to the DOM
-            if (typeof initPillarFilters === 'function') {
-                initPillarFilters('blog-list-container', 'blog-card');
-            }
-            // --- PILLAR FILTER INTEGRATION END ---
-            
-        })
-        .catch(err => {
-            console.error("Error loading blog list:", err);
-            container.innerHTML = "<p>Unable to load articles at this time.</p>";
-        });
-});
+<file path="data/articles.json">
+[{
+  "id": "waistcoat-stitch",
+  "title": "Mastering the Waistcoat Stitch",
+  "summary": "Learn how to create a beautiful knit-look texture with your crochet hook.",
+  "pillar": "Maker's Studio",
+  "date": "2026-02-07",
+  "image": "../images/gallery-project-basket.jpg",
+  "file": "../articles/waistcoat-stitch.md"
+}]
 </file>
 
 <file path="js/loadBlogPost.js">
@@ -1144,34 +1088,58 @@ Review each checklist item after relevant file changes. This will help maintain 
 The overlay does not currently trap focus or respond to "Esc" key to close. Consider adding accessibility improvements in the future.
 </file>
 
-<file path="pages/blog.html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Blog | TheYarnMagpie</title>
-    <script src="../js/loadHead.js"></script>
-    <link rel="stylesheet" href="../css/blog.css">
-</head>
-<body>
-    <div id="header-placeholder"></div>
+<file path="js/loadBlogList.js">
+/* js/loadBlogList.js */
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById('blog-list-container');
+    if (!container) return;
 
-    <main>
-      
-      <div id="pillar-filter-placeholder"></div>
-      
-      <section class="blog-intro">
-          <h2>The Loom: Articles & Insights</h2>
-          <p>Exploring the intersections of crochet, creativity, and business strategy.</p>
-      </section>
+    const isSubpage = window.location.pathname.includes('/pages/');
+    const dataPath = isSubpage ? '../data/articles.json' : 'data/articles.json';
 
-      <div id="blog-list-container"></div>
-    </main>
+    fetch(dataPath)
+        .then(response => response.json())
+        .then(articles => {
+            if (articles.length === 0) {
+                container.innerHTML = "<p>New articles coming soon!</p>";
+                return;
+            }
 
-    <script src="../js/loadHeader.js"></script>
-    <script src="../js/pillarFilter.js"></script>
-    <script src="../js/loadBlogList.js"></script>
-</body>
-</html>
+            container.innerHTML = ''; // Clear container
+
+            articles.forEach(article => {
+                const card = document.createElement('a');
+                card.className = 'blog-card';
+                card.href = `blog-post.html?id=${article.id}`;
+                card.target = "_blank"; 
+
+                // We use the 'pillar' field for the Nest Tag
+                const nestLabel = article.pillar || "The Maker's Studio";
+
+                card.innerHTML = `
+                    <img src="${article.image}" alt="${article.title}" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-pillar-tag">${nestLabel}</span>
+                        <h3>${article.title}</h3>
+                        <p>${article.summary}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            
+            // --- PILLAR FILTER INTEGRATION START ---
+            // This runs after all 'blog-card' elements are appended to the DOM
+            if (typeof initPillarFilters === 'function') {
+                initPillarFilters('blog-list-container', 'blog-card');
+            }
+            // --- PILLAR FILTER INTEGRATION END ---
+            
+        })
+        .catch(err => {
+            console.error("Error loading blog list:", err);
+            container.innerHTML = "<p>Unable to load articles at this time.</p>";
+        });
+});
 </file>
 
 <file path="pages/about.html">
@@ -1200,6 +1168,39 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
   
   <script src="../js/loadHeader.js"></script>
 </body>
+</file>
+
+<file path="pages/blog.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Blog | TheYarnMagpie</title>
+  <link rel="stylesheet" href="../css/blog.css">
+  <link rel="stylesheet" href="../css/nest-filter.css">
+  <script src="../js/loadHead.js"></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+
+    <div id="pillar-filter-placeholder"></div>
+
+    <section class="blog-intro">
+      <h2>The Loom: Articles & Insights</h2>
+      <p>
+        Exploring the intersections of crochet, creativity, and business strategy.
+      </p>
+    </section>
+
+    <div id="blog-list-container"></div>
+  </main>
+
+  <script src="../js/loadHeader.js"></script>
+  <script src="../js/pillarFilter.js"></script>
+  <script src="../js/loadBlogList.js"></script>
+</body>
+</html>
 </file>
 
 <file path="css/gallery-styles.css">
@@ -1401,64 +1402,6 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
 ]
 </file>
 
-<file path="pages/tools.html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tools | TheYarnMagpie</title>
-  <script src="../js/loadHead.js"></script>
-  <link rel="stylesheet" href="../css/tools.css">
-  <link rel="stylesheet" href="../css/nest-filter.css">
-  <link rel="stylesheet" href="../css/tool-detail-card.css">
-</head>
-<body>
-  <div id="header-placeholder"></div>
-
-  <main class="wrapper">
-    
-    <div id="pillar-filter-placeholder"></div>
-    
-    <header class="section-header">
-      <h2>The Workshop</h2>
-      <p>
-        Practical tools for the modern crocheter.
-      </p>
-    </header>
-
-    <div id="tools-container" class="tools-grid">
-      <p>
-        Loading tools...
-      </p>
-    </div>
-  </main>
-
-  <script src="../js/loadHeader.js"></script>
-  <script src="../js/pillarFilter.js"></script>
-  <script src="../js/loadTools.js"></script>
-</body>
-</html>
-</file>
-
-<file path="components/gallery-detail-card.html">
-<div id="galleryDetailOverlay" class="details-overlay">
-    <div class="gallery-detail-card">
-        <button id="closeGalleryDetailBtn" class="close-detail">&times;</button>
-        
-        <span id="galleryDetailPillar"></span>
-        <h2 id="galleryDetailTitle"></h2>
-        
-        <img id="galleryDetailImage" src="" alt="Project Detail">
-        
-        <p id="galleryDetailDescription"></p>
-        
-        <div class="tags-container">
-            <ul id="galleryDetailTags"></ul>
-        </div>
-    </div>
-</div>
-</file>
-
 <file path="js/loadHeader.js">
 document.addEventListener("DOMContentLoaded", function () {
   const headerPlaceholder = document.getElementById('header-placeholder');
@@ -1532,6 +1475,65 @@ head.appendChild(font);
       console.error('Error loading header:', error);
     });
 });
+</file>
+
+<file path="components/gallery-detail-card.html">
+<div id="galleryDetailOverlay" class="details-overlay">
+    <div class="gallery-detail-card">
+        <button id="closeGalleryDetailBtn" class="close-detail">&times;</button>
+        
+        <span id="galleryDetailPillar"></span>
+        <h2 id="galleryDetailTitle"></h2>
+        
+        <img id="galleryDetailImage" src="" alt="Project Detail">
+        
+        <p id="galleryDetailDescription"></p>
+        
+        <div class="tags-container">
+            <ul id="galleryDetailTags"></ul>
+        </div>
+    </div>
+</div>
+</file>
+
+<file path="pages/tools.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tools | TheYarnMagpie</title>
+  <script src="../js/loadHead.js"></script>
+  <link rel="stylesheet" href="../css/tools.css">
+  <link rel="stylesheet" href="../css/tool-detail-card.css">
+  <link rel="stylesheet" href="../css/nest-filter.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+    <div id="pillar-filter-placeholder"></div>
+
+  <main class="wrapper">
+    
+    
+    <header class="section-header">
+      <h2>The Workshop</h2>
+      <p>
+        Practical tools for the modern crocheter.
+      </p>
+    </header>
+
+    
+    <div id="tools-container" class="tools-grid">
+      <p>
+        Loading tools...
+      </p>
+    </div>
+  </main>
+
+  <script src="../js/loadHeader.js"></script>
+  <script src="../js/pillarFilter.js"></script>
+  <script src="../js/loadTools.js"></script>
+</body>
+</html>
 </file>
 
 <file path="css/gallery-details-card.css">
@@ -1957,6 +1959,13 @@ async function loadTools() {
       });
       container.appendChild(card);
     });
+
+    // Initialize f
+    if (typeof initPillarFilters === 'function') {
+      initPillarFilters('tools-container', 'tool-card');
+    }
+
+
   } catch (error) {
     console.error('Tools Load Error:', error);
   }
