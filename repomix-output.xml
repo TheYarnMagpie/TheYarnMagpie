@@ -922,6 +922,207 @@ Review each checklist item after relevant file changes. This will help maintain 
 The overlay does not currently trap focus or respond to "Esc" key to close. Consider adding accessibility improvements in the future.
 </file>
 
+<file path="css/tools-detail-card.css">
+/* css/tools-detail-card.css */
+
+#toolsDetailOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#toolsDetailOverlay.active {
+    display: flex;
+}
+
+.tools-detail-card {
+    background: var(--feather-white);
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    color: var(--feather-black);
+}
+
+.close-detail {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.detail-category {
+    display: inline-block;
+    color: var(--tail-green);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+</file>
+
+<file path="css/tools.css">
+/* css/tools.css */
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.tool-card {
+  background: var(--feather-white);
+  border: 1px solid var(--downy-grey);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--tail-green);
+}
+
+.tool-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-open-tool {
+  background: var(--tail-green);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.tool-card {
+  position: relative;
+  /* Context for tag */
+}
+
+.nest-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--tail-green);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+.tool-card * {
+  pointer-events: none;
+}
+
+.tool-card .nest-tag {
+  pointer-events: none;
+  /* Just in case */
+}
+</file>
+
+<file path="data/tools.json">
+[
+  {
+    "id": "hook-size-calc",
+    "title": "Hook Size Calculator",
+    "pillar": "Maker's Studio",
+    "category": "Essentials",
+    "description": "Convert hook sizes.",
+    "longDescription": "Full conversion table for US, UK, and Metric.",
+    "icon": "📏"
+  },
+  {
+    "id": "yarn-sub-tool",
+    "title": "Yarn Substitutor",
+    "pillar": "Strategist's Loom",
+    "category": "Planning",
+    "description": "Calculate yardage for different weights.",
+    "longDescription": "Estimate how much yarn you need when changing weights.",
+    "icon": "🧶"
+  }
+]
+</file>
+
+<file path="pages/about.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About | TheYarnMagpie</title>
+  <script src="../js/loadHead.js"></script>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  
+  <main class="about-content">
+    <section class="about-page-section">
+      <div>
+        <h2>About Me</h2>
+        <p>Hi! I'm TheYarnMagpie, a passionate crochet artist who loves turning yarn into magic. This space is where I share my creations, patterns, and stories behind the stitches.</p>
+        <p>From cozy mittens to whimsical accessories, I strive to create crochet that's beautiful, practical, and a little bit quirky.</p>
+        <p>Crochet is my passion since 2012, when I picked up a hook for the first time during vacations and made my first chains. Since then, I have made many projects using many kinds of stitches, from the simple basics up to intricate designs and lacework.</p>
+        <p>Established in Sept. 2024, TheYarnMagpie is my creative corner for crochet enthusiasts, yarnaddicts and accessory shoppers alike - from crochet tutorials over patterns, tips and tricks, all the way to finished items for purchase, you will find a lot of interesting content on my site.</p>
+        <p>Thanks for stopping by!</p>
+      </div>
+    </section>
+  </main>
+  
+  <script src="../js/loadHeader.js"></script>
+</body>
+</file>
+
+<file path="pages/tools.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tools | TheYarnMagpie</title>
+    <script src="../js/loadHead.js"></script>
+    <link rel="stylesheet" href="../css/tools.css">
+    <link rel="stylesheet" href="../css/tools-detail-card.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="wrapper">
+        <header class="section-header">
+            <h2>The Workshop</h2>
+            <p>Practical tools for the modern crocheter.</p>
+        </header>
+
+        <div id="tools-container" class="tools-grid">
+            <p>Loading tools...</p>
+        </div>
+    </main>
+
+    <script src="../js/loadHeader.js"></script>
+    <script src="../js/loadTools.js"></script>
+</body>
+</html>
+</file>
+
 <file path="css/gallery-styles.css">
 /* css/gallery.css */
 
@@ -990,317 +1191,143 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
 }
 </file>
 
-<file path="css/tools-detail-card.css">
-/* css/tools-detail-card.css */
-
-#toolsDetailOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-#toolsDetailOverlay.active {
-    display: flex;
-}
-
-.tools-detail-card {
-    background: var(--feather-white);
-    padding: 30px;
-    border-radius: 12px;
-    position: relative;
-    max-width: 500px;
-    width: 90%;
-    color: var(--feather-black);
-}
-
-.close-detail {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.detail-category {
-    display: inline-block;
-    color: var(--tail-green);
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-}
-</file>
-
-<file path="css/tools.css">
-/* css/tools.css */
-
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
-}
-
-.tool-card {
-    background: var(--feather-white);
-    border: 1px solid var(--downy-grey);
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-}
-
-.tool-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--tail-green);
-}
-
-.tool-icon {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-
-.btn-open-tool {
-    background: var(--tail-green);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 1rem;
-}
-</file>
-
-<file path="data/tools.json">
-[
-  {
-    "id": "hook-size-calc",
-    "title": "Hook Size Calculator",
-    "category": "Essentials",
-    "description": "Convert hook sizes.",
-    "longDescription": "Detailed hook size conversion guide.",
-    "icon": "📏"
-  }
-]
-</file>
-
-<file path="pages/about.html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>About | TheYarnMagpie</title>
-  <script src="../js/loadHead.js"></script>
-</head>
-
-<body>
-  <div id="header-placeholder"></div>
-  
-  <main class="about-content">
-    <section class="about-page-section">
-      <div>
-        <h2>About Me</h2>
-        <p>Hi! I'm TheYarnMagpie, a passionate crochet artist who loves turning yarn into magic. This space is where I share my creations, patterns, and stories behind the stitches.</p>
-        <p>From cozy mittens to whimsical accessories, I strive to create crochet that's beautiful, practical, and a little bit quirky.</p>
-        <p>Crochet is my passion since 2012, when I picked up a hook for the first time during vacations and made my first chains. Since then, I have made many projects using many kinds of stitches, from the simple basics up to intricate designs and lacework.</p>
-        <p>Established in Sept. 2024, TheYarnMagpie is my creative corner for crochet enthusiasts, yarnaddicts and accessory shoppers alike - from crochet tutorials over patterns, tips and tricks, all the way to finished items for purchase, you will find a lot of interesting content on my site.</p>
-        <p>Thanks for stopping by!</p>
-      </div>
-    </section>
-  </main>
-  
-  <script src="../js/loadHeader.js"></script>
-</body>
-</file>
-
-<file path="pages/tools.html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Tools | TheYarnMagpie</title>
-    <script src="../js/loadHead.js"></script>
-    <link rel="stylesheet" href="../css/tools.css">
-    <link rel="stylesheet" href="../css/tools-detail-card.css">
-</head>
-<body>
-    <div id="header-placeholder"></div>
-
-    <main class="wrapper">
-        <header class="section-header">
-            <h2>The Workshop</h2>
-            <p>Practical tools for the modern crocheter.</p>
-        </header>
-
-        <div id="tools-container" class="tools-grid">
-            <p>Loading tools...</p>
-        </div>
-    </main>
-
-    <script src="../js/loadHeader.js"></script>
-    <script src="../js/loadTools.js"></script>
-</body>
-</html>
+<file path="components/tools-detail-card.html">
+<div id="toolDetailOverlay" class="details-overlay">
+    <div class="tool-detail-card">
+        <button id="closeToolDetailBtn" class="close-detail">&times;</button>
+        <span id="toolDetailPillar" class="nest-tag"></span> <h2 id="toolDetailTitle"></h2>
+        <p id="toolDetailDescription"></p>
+        <p id="toolDetailLongDescription"></p>
+    </div>
+</div>
 </file>
 
 <file path="components/gallery-detail-card.html">
-<div id="galleryDetailOverlay" class="galleryDetailOverlay">
-  <div class="gallery-detail-card">
-    <button class="close-detail" id="closeGalleryDetailBtn" aria-label="Close details">&times;</button>
-    <img id="galleryDetailImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-    alt="Gallery item image" class="detail-image" />
-  <div class="detail-content">
-    <h2 id="galleryDetailTitle"></h2>
-    <p id="galleryDetailDescription"></p>
-    <ul id="galleryDetailTags"></ul>
-  </div>
-</div>
-</div>
-</file>
-
-<file path="components/tools-detail-card.html">
-<div id="toolsDetailOverlay" class="details-overlay">
-    <div class="tools-detail-card">
-        <button id="closeToolsDetailBtn" class="close-detail">&times;</button>
-        <div class="tools-detail-header">
-            <span id="toolsDetailIcon" class="detail-icon"></span>
-            <h2 id="toolsDetailTitle"></h2>
-        </div>
-        <div class="tools-detail-body">
-            <span id="toolsDetailCategory" class="detail-category"></span>
-            <p id="toolsDetailDescription"></p>
-            <div id="toolsDetailContent"></div>
+<div id="galleryDetailOverlay" class="details-overlay">
+    <div class="gallery-detail-card">
+        <button id="closeGalleryDetailBtn" class="close-detail">&times;</button>
+        
+        <span id="galleryDetailPillar"></span>
+        <h2 id="galleryDetailTitle"></h2>
+        
+        <img id="galleryDetailImage" src="" alt="Project Detail">
+        
+        <p id="galleryDetailDescription"></p>
+        
+        <div class="tags-container">
+            <ul id="galleryDetailTags"></ul>
         </div>
     </div>
 </div>
 </file>
 
 <file path="css/gallery-details-card.css">
+/* css/gallery-detail-card.css */
+
+/* Gallery Detail Overlay */
 #galleryDetailOverlay {
-    display: none; 
-    position: fixed; /* This makes it a popup */
-    z-index: 10000;
-    top: 0; left: 0; 
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  /* Ensures it stays in the center even if you've scrolled down */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  /* Controlled by .active class */
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  /* High number to stay above navbar/list */
 }
 
 #galleryDetailOverlay.active {
-    display: flex !important;
+  display: flex;
 }
 
+/* 1. Modal Container */
 .gallery-detail-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  max-width: 90vw;
-  width: 400px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 24px;
+  background: var(--feather-white);
+  max-width: 500px;
+  /* Constrains the overall width on desktop */
+  width: 90%;
+  max-height: 85vh;
+  border-radius: 20px;
   position: relative;
-  animation: fadeIn 0.3s;
-  cursor: default;
+  padding: 30px;
+  overflow-y: auto;
+  color: var(--feather-black);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* 2. The Big Image Fix */
+#galleryDetailImage {
+  width: 100%;
+  height: 300px;
+  /* Fixed height for consistency */
+  object-fit: cover;
+  /* Prevents stretching */
+  border-radius: 12px;
+  border: 1px solid var(--downy-grey);
+}
+
+/* 3. The Nest Tag (Pillar) */
+#galleryDetailPillar {
+  align-self: flex-start;
+  background-color: var(--tail-green);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 4. Detail Tags (Stitches, Materials) */
+#galleryDetailTags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+#galleryDetailTags li {
+  background: var(--downy-grey);
+  color: var(--coal-dust);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* 5. Typography */
+#galleryDetailTitle {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#galleryDetailDescription {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--coal-dust);
 }
 
 .close-detail {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 15px;
+  right: 15px;
   background: none;
   border: none;
-  font-size: 2rem;
-  color: #444;
+  font-size: 1.8rem;
   cursor: pointer;
+  color: var(--coal-dust);
+  z-index: 10;
 }
-
-#galleryDetailImage {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-.detail-content h2 {
-  margin-top: 0;
-  font-size: 1.5rem;
-}
-
-#galleryDetailTags {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-#galleryDetailTags li {
-  background: #4682B4;
-  border-radius: 4px;
-  padding: 4px 10px;
-  font-size: 0.95em;
-}
-</file>
-
-<file path="data/gallery.json">
-[
-  {
-    "image": "../images/gallery-project-basket.jpg",
-    "title": "TL Yarncrafts CAL Basket",
-    "pillar": "Maker's Studio",
-    "description": "A useful stash basket worked in the round with bulky yarn held in two strands, using the waistcoat stitch",
-    "tags": [
-      "home decor",
-      "waistcoat stitch",
-      "bulky acrylic"
-    ]
-  },
-  {
-    "image": "../images/flower-mandala-earrings.jpg",
-    "title": "Flower Mandala Earrings",
-    "pillar": "Collector's Vault",
-    "description": "Crocheted earrings with 7-petal flowers, reinforced with wire, and a small bead at the tip of each petal.",
-    "tags": [
-      "jewelry",
-      "bead crochet",
-      "fine yarn/lace"
-    ]
-  },
-  {
-    "image": "../images/hyperbolic-coral-charm.jpg",
-    "title": "Hyperbolic Plane Coral ball charm",
-    "pillar": "Collector's Vault",
-    "description": "Started as a round, disc-shaped ring and increasing stitches exponentially, this coral-like shape proves that hyperbolic planes (surfaces with negative curvature) can actually be physically created - with crochet!",
-    "tags": [
-      "accessories",
-      "geometry crochet",
-      "fine cotton"
-    ]
-  }
-]
 </file>
 
 <file path="js/loadHeader.js">
@@ -1378,6 +1405,44 @@ head.appendChild(font);
 });
 </file>
 
+<file path="data/gallery.json">
+[
+  {
+    "image": "../images/gallery-project-basket.jpg",
+    "title": "TL Yarncrafts CAL Basket",
+    "pillar": "Maker's Studio",
+    "description": "A useful stash basket worked in the round with bulky yarn held in two strands, using the waistcoat stitch",
+    "tags": [
+      "home decor",
+      "waistcoat stitch",
+      "bulky acrylic"
+    ]
+  },
+  {
+    "image": "../images/flower-mandala-earrings.jpg",
+    "title": "Flower Mandala Earrings",
+    "pillar": "Collector's Vault",
+    "description": "Crocheted earrings with 7-petal flowers, reinforced with wire, and a small bead at the tip of each petal.",
+    "tags": [
+      "jewelry",
+      "bead crochet",
+      "fine yarn/lace"
+    ]
+  },
+  {
+    "image": "../images/hyperbolic-coral-charm.jpg",
+    "title": "Hyperbolic Plane Coral ball charm",
+    "pillar": "Collector's Vault",
+    "description": "Started as a round, disc-shaped ring and increasing stitches exponentially, this coral-like shape proves that hyperbolic planes (surfaces with negative curvature) can actually be physically created - with crochet!",
+    "tags": [
+      "accessories",
+      "geometry crochet",
+      "fine cotton"
+    ]
+  }
+]
+</file>
+
 <file path="components/header.html">
 <header>
   <div class="header-container">
@@ -1400,101 +1465,6 @@ head.appendChild(font);
     </nav>
   </div>
 </header>
-</file>
-
-<file path="js/loadTools.js">
-// js/loadTools.js
-
-async function loadTools() {
-    const container = document.getElementById('tools-container');
-    if (!container) return;
-
-    // From /pages/tools.html, we must go UP one level to find /data/
-    const jsonPath = '../data/tools.json';
-
-    try {
-        const response = await fetch(jsonPath);
-        
-        if (!response.ok) {
-            throw new Error(`404: File not found at ${jsonPath}`);
-        }
-
-        const tools = await response.json();
-        
-        if (!tools || tools.length === 0) {
-            container.innerHTML = "<p>The workshop is currently empty.</p>";
-            return;
-        }
-
-        container.innerHTML = ''; 
-
-        tools.forEach(tool => {
-            const card = document.createElement('div');
-            card.className = 'tool-card';
-            card.innerHTML = `
-                <div class="tool-icon">${tool.icon}</div>
-                <h3>${tool.title}</h3>
-                <p>${tool.description}</p>
-                <button class="btn-open-tool" data-id="${tool.id}">Access Tool</button>
-            `;
-            container.appendChild(card);
-        });
-
-        // Gallery Fix Logic: Event Delegation
-        container.addEventListener('click', (e) => {
-            if (e.target.classList.contains('btn-open-tool')) {
-                const toolId = e.target.getAttribute('data-id');
-                const tool = tools.find(t => t.id === toolId);
-                openToolDetail(tool);
-            }
-        });
-
-    } catch (error) {
-        console.error("Magpie Fetch Error:", error);
-        container.innerHTML = `
-            <div style="padding: 2rem; border: 2px dashed var(--tail-green); border-radius: 12px; text-align: center;">
-                <p><strong>The Magpie is confused.</strong></p>
-                <p>I looked in <code>${jsonPath}</code> but found nothing.</p>
-                <p style="font-size: 0.8rem; color: #666;">Tip: Ensure the folder is named 'data' (lowercase) and is not inside 'pages'.</p>
-            </div>`;
-    }
-}
-
-async function openToolDetail(tool) {
-    try {
-        // Path to the component from the /pages/ directory
-        const response = await fetch('../components/tools-detail-card.html');
-        const template = await response.text();
-
-        const existing = document.getElementById('toolsDetailOverlay');
-        if (existing) existing.remove();
-
-        // Architectural Consistency: Body Injection
-        document.body.insertAdjacentHTML('beforeend', template);
-
-        document.getElementById('toolsDetailTitle').textContent = tool.title;
-        document.getElementById('toolsDetailIcon').textContent = tool.icon;
-        document.getElementById('toolsDetailCategory').textContent = tool.category;
-        document.getElementById('toolsDetailDescription').textContent = tool.longDescription;
-
-        const overlay = document.getElementById('toolsDetailOverlay');
-        setTimeout(() => overlay.classList.add('active'), 10);
-    } catch (err) {
-        console.error("Could not load detail component:", err);
-    }
-}
-
-// Global Modal Closer
-document.addEventListener('click', (e) => {
-    const overlay = document.getElementById('toolsDetailOverlay');
-    if (!overlay) return;
-    if (e.target.id === 'closeToolsDetailBtn' || e.target === overlay) {
-        overlay.classList.remove('active');
-        setTimeout(() => overlay.remove(), 300);
-    }
-});
-
-loadTools();
 </file>
 
 <file path="index.html">
@@ -1579,6 +1549,98 @@ loadTools();
 
 </body>
 </html>
+</file>
+
+<file path="js/loadTools.js">
+/* js/loadTools.js */
+
+async function loadTools() {
+  const container = document.getElementById('tools-container');
+  if (!container) return;
+
+  try {
+    const response = await fetch('../data/tools.json');
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const toolsData = await response.json();
+    container.innerHTML = '';
+
+    toolsData.forEach(tool => {
+      const card = document.createElement('div');
+      card.className = 'tool-card';
+      
+      const nestLabel = tool.pillar || "Maker's Studio";
+
+      card.innerHTML = `
+        <span class="nest-tag">${nestLabel}</span>
+        <div class="tool-icon">${tool.icon || '🛠️'}</div>
+        <h3>${tool.title}</h3>
+        <p>${tool.description}</p>
+      `;
+
+      // Use an arrow function to preserve the 'tool' object context
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        openToolDetail(tool);
+      });
+
+      container.appendChild(card);
+    });
+  } catch (error) {
+    console.error('Tools Load Error:', error);
+    container.innerHTML = `<p style="text-align:center; padding: 20px;">The Magpie is having trouble finding the tools data.</p>`;
+  }
+}
+
+async function openToolDetail(tool) {
+  try {
+    const res = await fetch('../components/tool-detail-card.html');
+    if (!res.ok) throw new Error("Template not found");
+    const template = await res.text();
+    
+    const existing = document.getElementById('toolDetailOverlay');
+    if (existing) existing.remove();
+
+    // BODY INJECTION: Essential for the "Gallery Fix" to work here too
+    document.body.insertAdjacentHTML('beforeend', template);
+    const overlay = document.getElementById('toolDetailOverlay');
+
+    // Populate using exact IDs from your tool-detail-card.html
+    document.getElementById('toolDetailTitle').textContent = tool.title;
+    document.getElementById('toolDetailDescription').textContent = tool.description;
+    
+    const pillarEl = document.getElementById('toolDetailPillar');
+    if (pillarEl) {
+        pillarEl.textContent = tool.pillar || "Maker's Studio";
+    }
+
+    // Handle potential Long Description
+    const longDesc = document.getElementById('toolDetailLongDescription');
+    if (longDesc && tool.longDescription) {
+        longDesc.textContent = tool.longDescription;
+    }
+
+    // Small delay to trigger CSS transitions
+    setTimeout(() => overlay.classList.add('active'), 10);
+  } catch (error) {
+    console.error('Error opening tool detail:', error);
+  }
+}
+
+// Global Close for Tools
+document.addEventListener('click', (e) => {
+  const overlay = document.getElementById('toolDetailOverlay');
+  if (!overlay) return;
+  
+  const isClose = e.target.id === 'closeToolDetailBtn' || e.target.closest('.close-detail') || e.target === overlay;
+  
+  if (isClose) {
+    overlay.classList.remove('active');
+    setTimeout(() => overlay.remove(), 300);
+  }
+});
+
+loadTools();
 </file>
 
 <file path="css/styles.css">
@@ -1931,25 +1993,26 @@ async function openGalleryDetail(item) {
     const templateRes = await fetch('../components/gallery-detail-card.html');
     const template = await templateRes.text();
     
+    // 1. Clean up existing overlay to prevent ID conflicts
     const existing = document.getElementById('galleryDetailOverlay');
     if (existing) existing.remove();
 
+    // 2. THE FIX: Inject into Body, not the container
+    // This ensures it stays on top and ignores the parent's layout
     document.body.insertAdjacentHTML('beforeend', template);
     
     const overlay = document.getElementById('galleryDetailOverlay');
     
-    // Populate Data
+    // 3. Populate Data
     document.getElementById('galleryDetailTitle').textContent = item.title;
     document.getElementById('galleryDetailImage').src = item.image;
     document.getElementById('galleryDetailDescription').textContent = item.description;
     
-    // 🏷️ NEST TAG IN OVERLAY:
     const pillarEl = document.getElementById('galleryDetailPillar');
     if (pillarEl) {
         pillarEl.textContent = item.pillar || "Collector's Vault";
     }
 
-    // Handle Tags List
     const tagsUl = document.getElementById('galleryDetailTags');
     if (tagsUl && item.tags && Array.isArray(item.tags)) {
       tagsUl.innerHTML = '';
@@ -1960,12 +2023,14 @@ async function openGalleryDetail(item) {
       });
     }
 
+    // 4. Show the overlay
     setTimeout(() => overlay.classList.add('active'), 10);
 
   } catch (error) {
     console.error('Error opening gallery detail:', error);
   }
 }
+
 
 // 3. Global Closing Logic
 document.addEventListener('click', function(e) {

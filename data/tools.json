@@ -2,9 +2,19 @@
   {
     "id": "hook-size-calc",
     "title": "Hook Size Calculator",
+    "pillar": "Maker's Studio",
     "category": "Essentials",
     "description": "Convert hook sizes.",
-    "longDescription": "Detailed hook size conversion guide.",
+    "longDescription": "Full conversion table for US, UK, and Metric.",
     "icon": "📏"
+  },
+  {
+    "id": "yarn-sub-tool",
+    "title": "Yarn Substitutor",
+    "pillar": "Strategist's Loom",
+    "category": "Planning",
+    "description": "Calculate yardage for different weights.",
+    "longDescription": "Estimate how much yarn you need when changing weights.",
+    "icon": "🧶"
   }
 ]
