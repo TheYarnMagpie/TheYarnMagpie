@@ -43,6 +43,8 @@ The content is organized as follows:
 .github/
   workflows/
     ci.yml
+articles/
+  waistcoat-stitch.md
 components/
   gallery-detail-card.html
   head.html
@@ -50,6 +52,7 @@ components/
   tools-detail-card.html
 css/
   about.css
+  blog.css
   colors.css
   contact-form.css
   gallery-details-card.css
@@ -59,6 +62,7 @@ css/
   tools-detail-card.css
   tools.css
 data/
+  articles.json
   gallery.json
   tools.json
 images/
@@ -69,14 +73,19 @@ images/
   magpie-yarn.png
   tym-logo.png
 js/
+  loadBlogList.js
+  loadBlogPost.js
   loadGallery.js
   loadHead.js
   loadHeader.js
   loadTools.js
 misc/
+  BLOGPOST_PIPELINE.md
   improvements-checklist.md
 pages/
   about.html
+  blog-post.html
+  blog.html
   contact-form.html
   gallery.html
   tools.html
@@ -112,8 +121,132 @@ Here are some ideas to get you started:
 -->
 </file>
 
+<file path="articles/waistcoat-stitch.md">
+# Mastering the Waistcoat Stitch
+
+The **Waistcoat Stitch** (also known as the Knit Stitch) is one of my favorite techniques for creating a sturdy, "knit-look" fabric using only a crochet hook. 
+
+### Why use this stitch?
+* **Strength:** It creates a very dense fabric, perfect for baskets.
+* **Aesthetics:** It looks almost identical to the "V" in knitting.
+* **Warmth:** Great for hats and thick sweaters.
+
+### Pro-Tip
+Keep your tension **loose**. Because you are inserting the hook into the "V" of the stitch below rather than the top loops, it can get tight very quickly!
+</file>
+
 <file path="css/about.css">
 
+</file>
+
+<file path="css/blog.css">
+/* --- BLOG LIST VIEW --- */
+#blog-list-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+}
+
+.blog-card {
+    display: flex;
+    background: #f9f9f9 !important; /* Force light background */
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    height: 200px;
+}
+
+/* FORCE TEXT COLORS TO BE VISIBLE */
+.blog-card-content h3 {
+    color: #222 !important; /* Dark charcoal */
+    margin: 0 0 10px 0;
+}
+
+.blog-card-content p {
+    color: #444 !important; /* Dark grey */
+    font-size: 0.95rem;
+}
+
+.blog-pillar-tag {
+    color: #d4a373 !important; /* Your Peach color */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.blog-card-image {
+    width: 30%;
+    object-fit: cover;
+    background: #eee;
+}
+
+/* --- BLOG POST / ARTICLE VIEW --- */
+.blog-article-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    color: #333 !important; /* Force dark text for article body */
+}
+
+#article-body {
+    line-height: 1.8;
+}
+
+/* Fix for Markdown headers if they are appearing white */
+#article-body h1, #article-body h2, #article-body h3 {
+    color: #222 !important;
+}
+
+/* --- THE PILLAR CTA BOX --- */
+.pillar-cta {
+    margin-top: 50px;
+    padding: 30px;
+    background: #ffffff !important;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Specific Top Borders */
+.pillar-cta.vault { border-top: 6px solid #4a4e69 !important; }
+.pillar-cta.studio { border-top: 6px solid #d4a373 !important; }
+.pillar-cta.loom { border-top: 6px solid #84a59d !important; }
+
+.pillar-cta h3 { color: #222 !important; }
+
+/* THE PEACH BUTTON */
+.pillar-cta .bmc-button {
+    display: inline-block;
+    background-color: #d4a373 !important; /* Peach */
+    color: #ffffff !important; /* White text on peach button */
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Mobile Fix */
+@media (max-width: 600px) {
+    .blog-card { flex-direction: column; height: auto; }
+    .blog-card-image { width: 100%; height: 180px; }
+}
+
+/* Ensures images inside blog posts don't overflow and look consistent */
+#article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Centers the image with spacing */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 </file>
 
 <file path="css/colors.css">
@@ -129,6 +262,20 @@ Here are some ideas to get you started:
   --violet-sheen: #7A5CA0;
   --sheen-gold: #C8A146;
 }
+</file>
+
+<file path="data/articles.json">
+[
+  {
+    "id": "waistcoat-stitch",
+    "title": "Mastering the Waistcoat Stitch",
+    "summary": "Learn how to create a beautiful knit-look texture with your crochet hook.",
+    "pillar": "The Maker's Studio",
+    "date": "2026-02-07",
+    "image": "../images/gallery-project-basket.jpg",
+    "file": "../articles/waistcoat-stitch.md"
+  }
+]
 </file>
 
 <file path="data/tools.json">
@@ -154,6 +301,276 @@ Here are some ideas to get you started:
         "tags": ["guantes", "ecológico", "sin dedos"]
     }
 ]
+</file>
+
+<file path="js/loadBlogList.js">
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById('blog-list-container');
+    
+    // Path check for subpages
+    const isSubpage = window.location.pathname.includes('/pages/');
+    const dataPath = isSubpage ? '../data/articles.json' : 'data/articles.json';
+
+    fetch(dataPath)
+        .then(response => response.json())
+        .then(articles => {
+            if (articles.length === 0) {
+                container.innerHTML = "<p>New articles coming soon!</p>";
+                return;
+            }
+
+            articles.forEach(article => {
+                const card = document.createElement('a');
+                card.className = 'blog-card';
+                // This link targets our new reader page with the specific ID
+                card.href = `blog-post.html?id=${article.id}`;
+                card.target = "_blank"; // Opens in new tab
+
+                card.innerHTML = `
+                    <img src="${article.image}" alt="${article.title}" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-pillar-tag">${article.pillar}</span>
+                        <h3>${article.title}</h3>
+                        <p>${article.summary}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(err => {
+            console.error("Error loading blog list:", err);
+            container.innerHTML = "<p>Unable to load articles at this time.</p>";
+        });
+});
+</file>
+
+<file path="js/loadBlogPost.js">
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('id');
+
+    if (!postId) {
+        document.getElementById('article-title').textContent = "No Article ID provided in URL.";
+        return;
+    }
+
+    let attempts = 0;
+    function checkLibrary() {
+        if (typeof marked !== 'undefined') {
+            console.log("Marked.js found!");
+            fetchArticleData(postId);
+        } else if (attempts < 50) { // Try for 5 seconds total
+            attempts++;
+            setTimeout(checkLibrary, 100);
+        } else {
+            document.getElementById('article-title').textContent = "Error: Markdown library failed to load.";
+        }
+    }
+
+    checkLibrary();
+});
+
+function fetchArticleData(postId) {
+    // Correctly locate articles.json from /pages/blog-post.html
+    const dataPath = '../data/articles.json'; 
+
+    fetch(dataPath)
+        .then(res => {
+            if (!res.ok) throw new Error("Could not load articles.json");
+            return res.json();
+        })
+        .then(articles => {
+            const article = articles.find(a => a.id === postId);
+            if (article) {
+                renderPost(article);
+            } else {
+                document.getElementById('article-title').textContent = "Article ID not found.";
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById('article-title').textContent = "Error loading metadata.";
+        });
+}
+
+function renderPost(article) {
+    document.getElementById('article-title').textContent = article.title;
+
+    fetch(article.file)
+        .then(res => {
+            if (!res.ok) throw new Error("Could not find Markdown file at: " + article.file);
+            return res.text();
+        })
+        .then(text => {
+            // Render the markdown
+            document.getElementById('article-body').innerHTML = marked.parse(text);
+            // Run the CTA logic
+            injectCTA(article.pillar);
+        })
+        .catch(err => {
+            document.getElementById('article-body').innerHTML = `<p style="color:red">${err.message}</p>`;
+        });
+}
+
+function injectCTA(pillar) {
+    const container = document.getElementById('dynamic-cta-container');
+    
+    const ctas = {
+        "The Collector's Vault": { text: "Shop the Collection", link: "gallery.html", class: "vault" },
+        "The Maker's Studio": { text: "Get the Pattern", link: "tools.html", class: "studio" },
+        "The Strategist's Loom": { text: "Download the Blueprint", link: "contact-form.html", class: "loom" }
+    };
+
+    // Fallback if pillar name doesn't match perfectly
+    const choice = ctas[pillar] || { text: "Back to Blog", link: "blog.html", class: "" };
+    
+    // REPLACE your old container.innerHTML with this:
+    container.innerHTML = `
+        <div class="pillar-cta ${choice.class}">
+            <h3>Inspired by ${pillar}?</h3>
+            <a href="${choice.link}" class="bmc-button">${choice.text}</a>
+        </div>
+    `;
+}
+</file>
+
+<file path="misc/BLOGPOST_PIPELINE.md">
+# **📚 TheYarnMagpie: Post Creation Pipeline**
+
+This document outlines the 3-step process for adding new content to the Blog section.
+
+## **Step 1: Create the Markdown Content**
+Create a new .md file in the /articles/ folder. Use a URL-friendly name (lowercase, no spaces, use hyphens).
+
+**Template (/articles/your-file-name.md):**
+# Your Catchy Title Here
+
+Introductory paragraph that hooks the reader.
+
+### Subheading (Use ### for smaller titles)
+* **Bold point:** Use double asterisks for emphasis.
+* List item 1
+* List item 2
+
+> Use the "greater than" symbol for a nice blockquote/tip box.
+
+Final closing thoughts.
+
+
+## **Step 2: Register in the Data File**
+The website won't know the file exists until you "register" it. Open data/articles.json and add a new entry to the top of the list.
+
+**Entry Template:**
+{
+"id": "your-unique-url-id",
+"title": "Display Title of the Post",
+"summary": "A short 1-2 sentence preview that shows on the list cards.",
+"pillar": "The Maker's Studio",
+"date": "2026-02-07",
+"image": "../images/your-image.jpg",
+"file": "../articles/your-file-name.md"
+}
+
+
+### **Pillar Options (Must match exactly):**
+The Collector's Vault (Triggers Slate border & Shop CTA)
+The Maker's Studio (Triggers Peach border & Pattern CTA)
+The Strategist's Loom (Triggers Sage border & Blueprint CTA)
+
+## **Step 3: Technical Reference (The "Under the Hood")**
+To maintain the system, here is how the parts connect:
+Component Responsibility
+pages/blog.html The "Hub" – shows all articles in a list.
+pages/blog-post.html The "Reader" – the blank template for every article.
+js/loadBlogList.js Fetches articles.json to build the preview cards.
+js/loadBlogPost.js Reads the ?id= in the URL, parses Markdown, and injects the CTA.
+css/blog.css Handles all colors, card shapes, and text visibility (!important rules).
+
+## ✅ Pre-Flight Checklist
+**Images:** Are your images saved in /images/? (Remember to use ../images/ in the JSON).
+**IDs:** Is the id in the JSON the same as what you want in the URL?
+**Pillars:** Did you double-check the spelling of the Pillar name? (Case sensitive!)
+**Target:** The system is set to target="_blank", so it will always open in a new tab.
+
+## 🖼️ Step 4: Handling Images
+1. ### **Featured Images (The Card Image)**
+The image that appears on the main Blog list page is defined in articles.json.
+Pathing: Use ../images/filename.jpg because the blog.html page is inside the /pages/ folder and needs to step "out" to find the images folder.
+Ratio: Aim for horizontal (landscape) images for the best rectangular card look.
+
+2. ### **Images Inside the Article (Markdown)**
+To add images within the text of your post, use the standard Markdown syntax inside your .md file.
+Format:
+![Alternative Text Description](path/to/image.jpg)
+
+### **⚠️ Critical Pathing Note:**
+When the browser renders your blog post, it is technically "standing" inside pages/blog-post.html. Therefore, the image path inside your Markdown must be relative to the pages folder, not the articles folder.
+Correct: ![My Crochet Basket](../images/basket.jpg)
+Incorrect: ![My Crochet Basket](./images/basket.jpg)
+
+3. ### **Image "Pro-Tip": Captions**
+If you want to add a caption under an image, use an italicized line directly below the image in your Markdown file:
+![Stitch Detail](../images/stitch-close-up.jpg)
+*Close-up of the V-shape in the Waistcoat stitch.*
+
+### **Summary Checklist for Images:**
+1. Upload your image to the /images/ folder.
+2. Reference it in articles.json for the preview card using ../images/.
+3. Reference it in the .md file for the body content using ../images/.
+</file>
+
+<file path="pages/blog-post.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blog | TheYarnMagpie</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <script src="../js/loadHead.js"></script>
+
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+      <a href="blog.html" style="color: #666; text-decoration: none; font-size: 0.9rem;">← Back to Blog</a>
+      
+        <article id="post-content" class="blog-article-container">
+            <h1 id="article-title">Loading...</h1>
+            <div id="article-body"></div>
+            <div id="dynamic-cta-container"></div>
+        </article>
+    </main>
+    <script src="../js/loadHeader.js"></script>
+    <script src="../js/loadBlogPost.js"></script>
+</body>
+</html>
+</file>
+
+<file path="pages/blog.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blog | TheYarnMagpie</title>
+    <script src="../js/loadHead.js"></script>
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+      <section class="blog-intro">
+          <h2>The Loom: Articles & Insights</h2>
+          <p>Exploring the intersections of crochet, creativity, and business strategy.</p>
+      </section>
+
+      <div id="blog-list-container"></div>
+    </main>
+
+    <script src="../js/loadHeader.js"></script>
+    <script src="../js/loadBlogList.js"></script>
+</body>
+</html>
 </file>
 
 <file path=".gitignore">
@@ -312,6 +729,57 @@ fi
 
 <file path=".github/workflows/ci.yml">
 
+</file>
+
+<file path="css/contact-form.css">
+/* styles for contact form */
+
+#contact-info {
+  background-color: var(--downy-grey);
+}
+
+#contact-info h3 {
+  text-align: center;
+}
+
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+#contact-form h3 {
+  text-align: center;
+}
+
+#contact-form label {
+  font-weight: bold;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#contact-form button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#contact-form button:hover {
+  background-color: #218838;
+}
 </file>
 
 <file path="css/tools-detail-card.css">
@@ -602,57 +1070,6 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
 </body>
 </file>
 
-<file path="css/contact-form.css">
-/* styles for contact form */
-
-#contact-info {
-  background-color: var(--downy-grey);
-}
-
-#contact-info h3 {
-  text-align: center;
-}
-
-#contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-#contact-form h3 {
-  text-align: center;
-}
-
-#contact-form label {
-  font-weight: bold;
-}
-
-#contact-form input,
-#contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#contact-form button {
-  padding: 10px 15px;
-  border: none;
-  background-color: #28a745;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-#contact-form button:hover {
-  background-color: #218838;
-}
-</file>
-
 <file path="css/gallery-styles.css">
 #gallery-container {
     display: grid;
@@ -733,7 +1150,7 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
 </file>
 
 <file path="components/gallery-detail-card.html">
-<div class="gallery-detail-overlay" id="galleryDetailOverlay">
+<div id="galleryDetailOverlay" class="gallery-detail-overlay">
     <div class="gallery-detail-card">
         <button class="close-detail" id="closeGalleryDetailBtn" aria-label="Close details">&times;</button>
         <img id="galleryDetailImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
@@ -762,11 +1179,12 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
 </file>
 
 <file path="css/gallery-details-card.css">
-.gallery-detail-overlay {
+#galleryDetailOverlay {
   display: none;
   /* Hidden by default */
   position: fixed;
   z-index: 9999;
+  cursor: pointer;
   top: 0;
   left: 0;
   width: 100vw;
@@ -776,7 +1194,7 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
   align-items: center;
 }
 
-.gallery-detail-overlay.active {
+#galleryDetail-overlay.active {
   display: flex;
 }
 
@@ -791,6 +1209,7 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
   padding: 24px;
   position: relative;
   animation: fadeIn 0.3s;
+  cursor: default;
 }
 
 @keyframes fadeIn {
@@ -815,7 +1234,7 @@ The overlay does not currently trap focus or respond to "Esc" key to close. Cons
   cursor: pointer;
 }
 
-#gallery-detail-image {
+#galleryDetailImage {
   width: 100%;
   border-radius: 8px;
   margin-bottom: 16px;
@@ -947,29 +1366,6 @@ head.appendChild(font);
 });
 </file>
 
-<file path="components/header.html">
-<header>
-  <div class="header-container">
-    <div class="brand">
-      <img src="/TheYarnMagpie/images/magpie-yarn.png" alt="magpie with a yarn ball" class="magpie-yarn">
-        <h1>TheYarnMagpie</h1>
-      </div>
-      <p class="tagline">creative crochet designs & handmade magic</p>
-   
-    <!-- Navigation Bar -->
-    <nav>      
-        <ul>
-            <li><a data-href="index.html">Home</a></li>
-            <li><a data-href="pages/about.html">About</a></li>
-            <li><a data-href="pages/gallery.html">Gallery</a></li>
-            <li><a data-href="pages/tools.html">Tools</a></li>
-            <li><a data-href="pages/contact-form.html">Contact</a></li>
-        </ul>
-    </nav>
-  </div>
-</header>
-</file>
-
 <file path="js/loadTools.js">
 // Use a dynamic base path for assets depending on where the page is being served
 const isSubpage = window.location.pathname.includes('/pages/');
@@ -1045,6 +1441,30 @@ document.addEventListener('click', function(e) {
     overlay.classList.remove('active');
   }
 });
+</file>
+
+<file path="components/header.html">
+<header>
+  <div class="header-container">
+    <div class="brand">
+      <img src="/TheYarnMagpie/images/magpie-yarn.png" alt="magpie with a yarn ball" class="magpie-yarn">
+        <h1>TheYarnMagpie</h1>
+      </div>
+      <p class="tagline">creative crochet designs & handmade magic</p>
+   
+    <!-- Navigation Bar -->
+    <nav>      
+        <ul>
+            <li><a data-href="index.html">Home</a></li>
+            <li><a data-href="pages/about.html">About</a></li>
+            <li><a data-href="pages/gallery.html">Gallery</a></li>
+            <li><a data-href="pages/blog.html">Blog</a></li>
+            <li><a data-href="pages/tools.html">Tools</a></li>
+            <li><a data-href="pages/contact-form.html">Contact</a></li>
+        </ul>
+    </nav>
+  </div>
+</header>
 </file>
 
 <file path="index.html">
@@ -1269,23 +1689,24 @@ blockquote {
 
 <file path="components/head.html">
 <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support My Crochet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support My Crochet</title>
+<link href="https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/TheYarnMagpie/css/colors.css">
-    <link rel="stylesheet" href="/TheYarnMagpie/css/styles.css">  <!-- for pages in /pages/ -->
-    <link rel="stylesheet" href="/TheYarnMagpie/css/styles.css">     <!-- for index.html in root -->
-    <link rel="stylesheet" href="/TheYarnMagpie/css/header.css">  <!-- Link to header styles -->
-    <link rel="stylesheet" href="/TheYarnMagpie/css/gallery-styles.css">
-    <link rel="stylesheet" href="/TheYarnMagpie/css/gallery-details-card.css">
-    <link rel="stylesheet" href="/TheYarnMagpie/css/tools.css">
-    <link rel="stylesheet" href="/TheYarnMagpie/css/tools-details-card.css">
-    <link rel="stylesheet" href="/TheYarnMagpie/css/contact-form.css">
+<link rel="stylesheet" href="../css/colors.css">
+<link rel="stylesheet" href="../css/styles.css">  <!-- for pages in /pages/ -->
+<link rel="stylesheet" href="../css/styles.css">     <!-- for index.html in root -->
+<link rel="stylesheet" href="../css/header.css">  <!-- Link to header styles -->
+<link rel="stylesheet" href="../css/gallery-styles.css">
+<link rel="stylesheet" href="/css/gallery-details-card.css">
+<link rel="stylesheet" href="/css/tools.css">
+<link rel="stylesheet" href="/css/tools-details-card.css">
+<link rel="stylesheet" href="../css/contact-form.css">
 
-    <script src="/js/loadHead.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="/js/loadHead.js"></script>
 </file>
 
 <file path="css/header.css">
@@ -1432,22 +1853,22 @@ nav ul li a {
 <file path="js/loadGallery.js">
 // Use a dynamic base path for assets depending on where the page is being served
 const isSubpage = window.location.pathname.includes('/pages/');
-const galleryJsonPath = isSubpage ? '../data/gallery.json' : 'data/gallery.json';
-const detailCardPath = isSubpage ? '../components/gallery-detail-card.html' : 'components/gallery-detail-card.html';
+const galleryJsonPath = isSubpage ? '../data/gallery.json': 'data/gallery.json';
+const detailCardPath = '../components/gallery-detail-card.html';
 
 // Load the overlay HTML ONCE, then load data and render cards
 fetch(detailCardPath)
-  .then(res => res.text())
-  .then(html => {
-    document.body.insertAdjacentHTML('beforeend', html);
-    // Now that the overlay is present, fetch data and render cards
-    fetch(galleryJsonPath)
-      .then(r => r.json())
-      .then(galleryData => {
-        renderGalleryCards(galleryData);
-        attachDetailButtons(galleryData);
-      });
+.then(res => res.text())
+.then(html => {
+  document.body.insertAdjacentHTML('beforeend', html);
+  // Now that the overlay is present, fetch data and render cards
+  fetch(galleryJsonPath)
+  .then(r => r.json())
+  .then(galleryData => {
+    renderGalleryCards(galleryData);
+    attachDetailButtons(galleryData);
   });
+});
 
 // Render gallery cards inside the gallery-container
 function renderGalleryCards(galleryData) {
@@ -1457,11 +1878,11 @@ function renderGalleryCards(galleryData) {
     const card = document.createElement('div');
     card.className = 'gallery-card';
     card.innerHTML = `
-      <img src="${item.image}" alt="${item.title}" class="gallery-card-image" />
-      <div class="card-content">
-        <h3>${item.title}</h3>
-        <button class="see-details-btn" data-idx="${idx}">See Details</button>
-      </div>
+    <img src="${item.image}" alt="${item.title}" class="gallery-card-image" />
+    <div class="card-content">
+    <h3>${item.title}</h3>
+    <button class="see-details-btn" data-idx="${idx}">See Details</button>
+    </div>
     `;
     galleryContainer.appendChild(card);
   });
@@ -1482,10 +1903,13 @@ function attachDetailButtons(galleryData) {
 function openGalleryDetail(item) {
   const overlay = document.getElementById('galleryDetailOverlay');
   if (!overlay) return;
+
+  // Ensure these IDs match your gallery-detail-card.html exactly
   document.getElementById('galleryDetailImage').src = item.image;
   document.getElementById('galleryDetailImage').alt = item.title;
   document.getElementById('galleryDetailTitle').textContent = item.title;
   document.getElementById('galleryDetailDescription').textContent = item.description || '';
+
   const tagsUl = document.getElementById('galleryDetailTags');
   tagsUl.innerHTML = '';
   if (item.tags && Array.isArray(item.tags)) {
@@ -1495,17 +1919,23 @@ function openGalleryDetail(item) {
       tagsUl.appendChild(li);
     });
   }
+
+  // This class triggers the 'display: flex' in your gallery-details-card.css
   overlay.classList.add('active');
 }
+
 
 // Overlay close handler (close on X or when clicking the overlay background)
 document.addEventListener('click', function(e) {
   const overlay = document.getElementById('galleryDetailOverlay');
   if (!overlay || !overlay.classList.contains('active')) return;
-  if (
-    e.target.id === 'galleryDetailOverlay' ||
-    e.target.id === 'closeGalleryDetailBtn'
-  ) {
+
+  const detailCard = overlay.querySelector('.gallery-detail-card');
+  
+  // Close if: 
+  // 1. You clicked the 'X' button
+  // 2. OR you clicked the background (e.target is exactly the overlay)
+  if (e.target.id === 'closeGalleryDetailBtn' || e.target.classList.contains('close-detail') || e.target === overlay) {
     overlay.classList.remove('active');
   }
 });
