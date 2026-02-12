@@ -72,7 +72,7 @@ images/
   flower-mandala-earrings.jpg
   gallery-project-basket.jpg
   hyperbolic-coral-charm.jpg
-  magpie-yarn.png
+  tym-logo-color.png
   tym-logo.png
 js/
   loadBlogList.js
@@ -935,29 +935,6 @@ function injectCTA(pillar) {
 }
 </file>
 
-<file path="js/loadHead.js">
-document.addEventListener("DOMContentLoaded", function () {
-  const head = document.getElementsByTagName("head")[0];
-  const isSubpage = window.location.pathname.includes('/pages/');
-  const path = isSubpage ? '../components/head.html' : 'components/head.html';
-
-  fetch(path)
-    .then(response => {
-      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-      return response.text();
-    })
-    .then(data => {
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = data;
-
-      [...tempDiv.children].forEach(el => head.appendChild(el));
-    })
-    .catch(error => {
-      console.error('Error loading head:', error);
-    });
-});
-</file>
-
 <file path="misc/improvements-checklist.md">
 # TheYarnMagpie Site Code Quality Improvement Checklist
 
@@ -1134,6 +1111,49 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error loading blog list:", err);
             container.innerHTML = "<p>Unable to load articles at this time.</p>";
         });
+});
+</file>
+
+<file path="js/loadHead.js">
+// js/loadHead.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  const headerPlaceholder = document.getElementById("header-placeholder");
+  const isPage = window.location.pathname.includes("/pages/");
+
+  // Determine correct path to header component based on current location
+  const headerPath = isPage ? "../components/header.html" : "components/header.html";
+
+  fetch(headerPath)
+    .then((response) => {
+      if (!response.ok) throw new Error("Header not found");
+      return response.text();
+    })
+    .then((html) => {
+      // FIX: Modify paths in the text string BEFORE injecting into DOM.
+      // This is crucial to prevent the browser from trying to load broken paths 
+      // immediately upon injection (race condition).
+      
+      if (isPage) {
+        // 1. Fix Images (src)
+        // Regex logic: Find src attributes that do NOT start with http, https, /, or ..
+        html = html.replace(
+          /src="(?!(http|https|\/|\.\.))([^"]+)"/g, 
+          'src="../$2"'
+        );
+
+        // 2. Fix Links (href) 
+        // Regex logic: Same as above, but also ignore hash links (#)
+        html = html.replace(
+          /href="(?!(http|https|\/|\.\.|#))([^"]+)"/g, 
+          'href="../$2"'
+        );
+      }
+
+      // Inject the corrected HTML
+      headerPlaceholder.innerHTML = html;
+    })
+    .catch((error) => console.error("Error loading header:", error));
 });
 </file>
 
@@ -1535,21 +1555,23 @@ head.appendChild(font);
 <header>
   <div class="header-container">
     <div class="brand">
-      <img src="/TheYarnMagpie/images/magpie-yarn.png" alt="magpie with a yarn ball" class="magpie-yarn">
-        <h1>TheYarnMagpie</h1>
-      </div>
-      <p class="tagline">creative crochet designs & handmade magic</p>
-   
+      <img src="../images/tym-logo-color.png" alt="brand logo: magpie with a yarn ball" class="magpie-yarn">
+      <h1>TheYarnMagpie</h1>
+    </div>
+    <p class="tagline">
+      creative crochet designs & handmade magic
+    </p>
+
     <!-- Navigation Bar -->
-    <nav>      
-        <ul>
-            <li><a data-href="index.html">Home</a></li>
-            <li><a data-href="pages/about.html">About</a></li>
-            <li><a data-href="pages/gallery.html">Gallery</a></li>
-            <li><a data-href="pages/blog.html">Blog</a></li>
-            <li><a data-href="pages/tools.html">Tools</a></li>
-            <li><a data-href="pages/contact-form.html">Contact</a></li>
-        </ul>
+    <nav>
+      <ul>
+        <li><a data-href="index.html">Home</a></li>
+        <li><a data-href="pages/about.html">About</a></li>
+        <li><a data-href="pages/gallery.html">Gallery</a></li>
+        <li><a data-href="pages/blog.html">Blog</a></li>
+        <li><a data-href="pages/tools.html">Tools</a></li>
+        <li><a data-href="pages/contact-form.html">Contact</a></li>
+      </ul>
     </nav>
   </div>
 </header>
@@ -1787,12 +1809,31 @@ head.appendChild(font);
 </file>
 
 <file path="css/styles.css">
+/* css/style.css */
+
+/* 1. Global Reset & Layout Fixes */
 body, html {
-   flex-direction: column;
-    width: 100vw;
+    flex-direction: column;
+    /* FIX: Changed from 100vw to 100% to prevent scrollbar width calculation errors */
+    width: 100%; 
+    max-width: 100%; 
+    /* FIX: Force hidden overflow to remove the "weird right margin" */
+    overflow-x: hidden; 
     margin: 0;
     padding: 0;
-    background-color: var(--mid-feather-grey)
+    background-color: var(--mid-feather-grey);
+}
+
+/* FIX: Global Image Safety (Prevents images from breaking layout on mobile) */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* FIX: Header Placeholder Safety */
+#header-placeholder {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 main {
@@ -1811,7 +1852,7 @@ a:hover {
   font-weight: bold;
 }
 
-/* Sections of main page */
+/* 2. Main Page Sections */
 section {
     margin: 1rem;
     padding: 1.5rem;
@@ -1866,13 +1907,12 @@ blockquote {
   justify-content: center;
 }
 
-/* Social pages links section  */
+/* 3. Social Section */
 #social-section {
     text-align: center;
 }
 
 /* Social Media Buttons */
-
 .social-icons {
     display: flex;
     flex-wrap: wrap;  /* Allows buttons to break into new rows */
@@ -1901,6 +1941,7 @@ blockquote {
 .tiktok { background-color: #000000; }
 .threads { background-color: #1DA1F2; }
 
+/* 4. Support Buttons */
 .bmc-button {
     display: inline-block;
     background-color: var(--wing-blue);

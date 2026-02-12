@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerPlaceholder = document.getElementById("header-placeholder");
   const isPage = window.location.pathname.includes("/pages/");
 
-  // Determine correct path to header component based on current location
+  // Determine correct path to header component
   const headerPath = isPage ? "../components/header.html" : "components/header.html";
 
   fetch(headerPath)
@@ -13,29 +13,34 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.text();
     })
     .then((html) => {
-      // FIX: Modify paths in the text string BEFORE injecting into DOM.
-      // This is crucial to prevent the browser from trying to load broken paths 
-      // immediately upon injection (race condition).
+      // FIX: Apply path corrections for BOTH Home and Sub-pages
       
       if (isPage) {
-        // 1. Fix Images (src)
-        // Regex logic: Find src attributes that do NOT start with http, https, /, or ..
+        // --- SUB-PAGES (pages/...) ---
+        // Prepend "../" to go back to root
         html = html.replace(
           /src="(?!(http|https|\/|\.\.))([^"]+)"/g, 
           'src="../$2"'
         );
-
-        // 2. Fix Links (href) 
-        // Regex logic: Same as above, but also ignore hash links (#)
         html = html.replace(
           /href="(?!(http|https|\/|\.\.|#))([^"]+)"/g, 
           'href="../$2"'
         );
+      } else {
+        // --- HOME PAGE (root) ---
+        // Prepend "./" to force explicit current-directory lookup.
+        // This helps bypass cache and resolves ambiguity on some servers.
+        html = html.replace(
+          /src="(?!(http|https|\/|\.\.))([^"]+)"/g, 
+          'src="./$2"'
+        );
+        html = html.replace(
+          /href="(?!(http|https|\/|\.\.|#))([^"]+)"/g, 
+          'href="./$2"'
+        );
       }
 
-      // Inject the corrected HTML
       headerPlaceholder.innerHTML = html;
     })
     .catch((error) => console.error("Error loading header:", error));
 });
-
