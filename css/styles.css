@@ -1,9 +1,28 @@
+/* css/style.css */
+
+/* 1. Global Reset & Layout Fixes */
 body, html {
-   flex-direction: column;
-    width: 100vw;
+    flex-direction: column;
+    /* FIX: Changed from 100vw to 100% to prevent scrollbar width calculation errors */
+    width: 100%; 
+    max-width: 100%; 
+    /* FIX: Force hidden overflow to remove the "weird right margin" */
+    overflow-x: hidden; 
     margin: 0;
     padding: 0;
-    background-color: var(--mid-feather-grey)
+    background-color: var(--mid-feather-grey);
+}
+
+/* FIX: Global Image Safety (Prevents images from breaking layout on mobile) */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* FIX: Header Placeholder Safety */
+#header-placeholder {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 main {
@@ -22,7 +41,7 @@ a:hover {
   font-weight: bold;
 }
 
-/* Sections of main page */
+/* 2. Main Page Sections */
 section {
     margin: 1rem;
     padding: 1.5rem;
@@ -77,13 +96,12 @@ blockquote {
   justify-content: center;
 }
 
-/* Social pages links section  */
+/* 3. Social Section */
 #social-section {
     text-align: center;
 }
 
 /* Social Media Buttons */
-
 .social-icons {
     display: flex;
     flex-wrap: wrap;  /* Allows buttons to break into new rows */
@@ -112,6 +130,7 @@ blockquote {
 .tiktok { background-color: #000000; }
 .threads { background-color: #1DA1F2; }
 
+/* 4. Support Buttons */
 .bmc-button {
     display: inline-block;
     background-color: var(--wing-blue);
